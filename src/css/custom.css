@@ -1,0 +1,155 @@
+/* Additions to style.css. Kept in a separate file so style.css (compiled from style.scss) stays untouched. */
+
+/* Page titles keep the original h1 size, while each page keeps a single real <h1> (the name in the sidebar). */
+.page-title {
+    font-size: 2.5rem;
+}
+
+/* Skip link for keyboard users */
+.skip-link:focus {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    padding: 8px 16px;
+    background: #fff;
+    color: #2A4B7C;
+    font-weight: 600;
+}
+
+:focus-visible {
+    outline: 3px solid rgba(42, 75, 124, .65);
+    outline-offset: 2px;
+}
+
+.sidebar :focus-visible,
+.bg-secondary :focus-visible,
+.bg-primary :focus-visible,
+.hero :focus-visible {
+    outline-color: #fff;
+}
+
+/* Featured article on the home page */
+.hero {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #2A4B7C 0%, #202C45 100%);
+}
+
+.hero-inner {
+    position: relative;
+    z-index: 1;
+    min-height: 420px;
+    padding: 3rem 1.5rem;
+}
+
+.hero-inner h2 {
+    max-width: 40rem;
+}
+
+.hero-label {
+    font-size: .9rem;
+    letter-spacing: .02em;
+    color: rgba(255, 255, 255, .8);
+}
+
+.hero-icon {
+    position: absolute;
+    right: -1.5rem;
+    bottom: -2.5rem;
+    font-size: 15rem;
+    color: rgba(255, 255, 255, .07);
+    transform: rotate(-12deg);
+    pointer-events: none;
+}
+
+/* Cover art for posts (replaces photos until real cover images are added) */
+.post-cover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 240px;
+    height: 100%;
+    background: linear-gradient(135deg, #2A4B7C 0%, #202C45 100%);
+    color: rgba(255, 255, 255, .88);
+    font-size: 4rem;
+}
+
+.post-cover:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.post-cover-lg {
+    min-height: 300px;
+    font-size: 5rem;
+}
+
+/* Cover photo, used instead of .post-cover when a post has an uploaded image */
+.post-cover-img {
+    display: block;
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+}
+
+.post-cover-img-lg {
+    height: 300px;
+}
+
+/* Comfortable reading width for long text */
+.article-body {
+    max-width: 46rem;
+    font-size: 1.05rem;
+    line-height: 1.75;
+}
+
+.article-body ul {
+    padding-left: 1.25rem;
+}
+
+.article-body li + li {
+    margin-top: .75rem;
+}
+
+.post-tag {
+    font-size: .85rem;
+    font-weight: 600;
+    padding: .4rem .7rem;
+    margin: 0 .25rem .5rem 0;
+}
+
+/* Forms */
+.form-feedback:empty {
+    display: none;
+}
+
+.newsletter-group {
+    max-width: 30rem;
+}
+
+/* Motion: respect the visitor's setting */
+@media (prefers-reduced-motion: reduce) {
+    .back-to-top {
+        -webkit-animation: none;
+        animation: none;
+    }
+
+    .wrapper .sidebar,
+    .wrapper .content {
+        transition: none;
+    }
+}
+
+/* Markdown output inside blog articles (posts are authored in the CMS as Markdown) */
+.article-body h2,
+.article-body h3,
+.article-body h4 {
+    font-weight: 700;
+    margin-top: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.article-body p {
+    margin-bottom: 1.1rem;
+}

@@ -1,0 +1,56 @@
+---
+layout: base.njk
+title: Personal Blog
+description: "Personal blog of Mohammed Hanafi, a frontend developer, entrepreneur, youth influencer and teacher writing about education and inspiring the next generation."
+active: home
+forms: true
+permalink: /index.html
+---
+{% set latest = collections.posts | first %}
+{% if latest %}
+            <!-- Featured Article Start -->
+            <div class="container p-0">
+                <section class="hero text-white" aria-labelledby="featured-title">
+                    <i class="fas fa-graduation-cap hero-icon" aria-hidden="true"></i>
+                    <div class="hero-inner d-flex flex-column align-items-center justify-content-center text-center">
+                        <p class="hero-label mb-3">Featured article</p>
+                        <h2 id="featured-title" class="mb-3 text-white font-weight-bold">{{ latest.data.title }}</h2>
+                        <div class="d-flex flex-wrap justify-content-center text-white">
+                            <small class="mx-2"><i class="fa fa-calendar-alt" aria-hidden="true"></i> {{ latest.data.date | readableDate }}</small>
+                            <small class="mx-2"><i class="fa fa-folder" aria-hidden="true"></i> {{ latest.data.category }}</small>
+                        </div>
+                        <a href="{{ latest.url }}" class="btn btn-lg btn-outline-light mt-4">Read article</a>
+                    </div>
+                </section>
+            </div>
+            <!-- Featured Article End -->
+{% endif %}
+
+            <!-- Welcome Start -->
+            <div class="container bg-white py-5 px-4">
+                <h2 class="mb-3 font-weight-bold">Hi, I'm {{ site.name }}</h2>
+                <p class="mb-4 article-body">
+                    I believe that education is the most powerful tool for positive change and that everyone should have the opportunity to unlock their potential and achieve their dreams. I am passionate about helping others to reach their potential and discover the power that lies within each and every one of us.
+                </p>
+                <a href="/about.html" class="btn btn-primary mr-2 mb-2">About me</a>
+                <a href="/blog.html" class="btn btn-outline-primary mb-2">Read the blog</a>
+            </div>
+            <!-- Welcome End -->
+
+            <!-- Subscribe Start -->
+            <div class="container py-5 px-4 bg-secondary text-center">
+                <h2 class="text-white font-weight-bold">Subscribe to my newsletter</h2>
+                <p class="text-white">Subscribe and get my latest article in your inbox.</p>
+                <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="js-form" data-invalid-message="Enter a valid email address." data-success-message="Thanks for subscribing!" novalidate>
+                    <input type="hidden" name="form-name" value="newsletter">
+                    <p class="d-none"><label>Leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+                    <div class="input-group mx-auto newsletter-group">
+                        <input type="email" name="email" class="form-control" placeholder="Your email" aria-label="Your email" autocomplete="email" required>
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </div>
+                    <div class="form-feedback newsletter-group mx-auto mt-3 text-left" aria-live="polite"></div>
+                </form>
+            </div>
+            <!-- Subscribe End -->

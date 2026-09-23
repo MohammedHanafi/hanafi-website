@@ -1,0 +1,39 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# After you deploy on Netlify and turn on Identity + Git Gateway (see README.md),
+# publishing a post here commits a new Markdown file to src/posts/ in your repo,
+# and Netlify rebuilds the site automatically. No code editing needed.
+
+publish_mode: simple
+media_folder: "src/img/uploads"
+public_folder: "/img/uploads"
+
+collections:
+  - name: "posts"
+    label: "Blog posts"
+    folder: "src/posts"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post.njk" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Category", name: "category", widget: "string", default: "Education" }
+      - { label: "Cover image", name: "image", widget: "image", required: false, hint: "Optional. If left empty, the icon below is shown instead." }
+      - label: "Icon"
+        name: "icon"
+        widget: "select"
+        default: "fa-graduation-cap"
+        options:
+          - { label: "Graduation cap", value: "fa-graduation-cap" }
+          - { label: "Lightbulb", value: "fa-lightbulb" }
+          - { label: "Book", value: "fa-book" }
+          - { label: "Megaphone", value: "fa-bullhorn" }
+          - { label: "Chalkboard", value: "fa-chalkboard-teacher" }
+      - { label: "Excerpt", name: "excerpt", widget: "text", hint: "1-2 sentences shown on the blog list and used as the page description." }
+      - { label: "Tags", name: "tags", widget: "list", default: [] }
+      - { label: "Body", name: "body", widget: "markdown" }

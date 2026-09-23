@@ -1,0 +1,47 @@
+---
+layout: base.njk
+pageHeader: true
+heading: "Article"
+breadcrumbs:
+  - label: "Home"
+    href: "/index.html"
+  - label: "My blog"
+    href: "/blog.html"
+  - label: "Article"
+---
+            <!-- Article Start -->
+            <div class="container py-5 px-2 bg-white">
+                <div class="row px-4">
+                    <div class="col-12">
+                        {% if image %}
+                        <img class="post-cover-img post-cover-img-lg" src="{{ image }}" alt="">
+                        {% else %}
+                        <div class="post-cover post-cover-lg" aria-hidden="true"><i class="fas {{ icon or 'fa-graduation-cap' }}"></i></div>
+                        {% endif %}
+                        <article class="article-body">
+                            <h2 class="my-4 font-weight-bold">{{ title }}</h2>
+                            <div class="d-flex mb-4 text-muted">
+                                <span class="mr-3"><i class="fa fa-calendar-alt" aria-hidden="true"></i> {{ date | readableDate }}</span>
+                                <span class="mr-3"><i class="fa fa-folder" aria-hidden="true"></i> {{ category }}</span>
+                            </div>
+
+{{ content | safe }}
+                        </article>
+                    </div>
+                    {% if tags %}
+                    <div class="col-12 py-4">
+                        {% for tag in tags %}<span class="badge badge-primary post-tag">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <div class="col-12 py-4">
+                        <div class="p-4 bg-light">
+                            <h3 class="mb-2 font-weight-bold">Have a thought on this article?</h3>
+                            <p class="mb-3">I would love to hear it. Send me a message and I will get back to you.</p>
+                            <a href="/contact.html" class="btn btn-primary mr-2 mb-2">Send a message</a>
+                            <a href="/blog.html" class="btn btn-outline-primary mb-2">Back to the blog</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Article End -->
