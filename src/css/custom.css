@@ -159,21 +159,9 @@
     border-bottom: 1px solid rgba(0, 0, 0, .08);
 }
 
-.topbar-avatar {
-    width: 64px;
-    height: 64px;
-    object-fit: cover;
-    border: 2px solid #2A4B7C;
-}
-
-.topbar-name {
-    font-size: 1.25rem;
-    line-height: 1.2;
-}
-
-.topbar-tagline {
-    font-size: .85rem;
-    color: #6c757d;
+.topbar-logo {
+    height: 56px;
+    width: auto;
 }
 
 .topbar-social .btn {

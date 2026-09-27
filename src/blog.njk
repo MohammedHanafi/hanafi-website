@@ -13,7 +13,9 @@ breadcrumbs:
 ---
             <!-- Blog List Start -->
             <div class="container bg-white pt-5">
-                {% for post in collections.posts %}
+                {% for group in collections.postsByCategory %}
+                <h2 class="h4 font-weight-bold mb-4{% if not loop.first %} mt-3{% endif %}">{{ group.category }}</h2>
+                {% for post in group.posts %}
                 <div class="row blog-item px-3 pb-5">
                     <div class="col-md-5">
                         {% if post.data.image %}
@@ -32,6 +34,7 @@ breadcrumbs:
                         <a class="btn btn-link p-0" href="{{ post.url }}">Read article <i class="fa fa-angle-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
+                {% endfor %}
                 {% else %}
                 <div class="row px-3 pb-5">
                     <div class="col-12">
