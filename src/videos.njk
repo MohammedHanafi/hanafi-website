@@ -1,0 +1,42 @@
+---
+layout: base.njk
+title: Videos
+description: "Watch videos from Mohammed Hanafi's YouTube channel, embedded here and updated automatically as new videos are uploaded."
+active: videos
+pageHeader: true
+heading: "Videos"
+permalink: /videos.html
+breadcrumbs:
+  - label: "Home"
+    href: "/index.html"
+  - label: "Videos"
+---
+            <!-- Videos Start -->
+            <div class="container bg-white pt-5 pb-5">
+                <div class="row px-3 pb-4">
+                    <div class="col-12">
+                        <p class="mb-4">
+                            The videos below are pulled directly from my YouTube channel, so anything I upload there appears here automatically.
+                        </p>
+                    </div>
+                </div>
+                <div class="row px-3 pb-4">
+                    <div class="col-12">
+                        <div class="video-embed">
+                            <iframe
+                                src="https://www.youtube.com/embed/videoseries?list={{ site.youtubeUploadsPlaylist }}"
+                                title="{{ site.name }} on YouTube"
+                                loading="lazy"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="row px-3">
+                    <div class="col-12">
+                        <a href="{{ site.youtube }}" target="_blank" rel="noopener" class="btn btn-primary"><i class="fab fa-youtube mr-1" aria-hidden="true"></i> Subscribe on YouTube</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Videos End -->
