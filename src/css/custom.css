@@ -153,3 +153,36 @@
 .article-body p {
     margin-bottom: 1.1rem;
 }
+
+/* Top profile banner (replaces the old fixed left sidebar) */
+.topbar {
+    border-bottom: 1px solid rgba(0, 0, 0, .08);
+}
+
+.topbar-avatar {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border: 2px solid #2A4B7C;
+}
+
+.topbar-name {
+    font-size: 1.25rem;
+    line-height: 1.2;
+}
+
+.topbar-tagline {
+    font-size: .85rem;
+    color: #6c757d;
+}
+
+.topbar-social .btn {
+    padding: .25rem .5rem;
+}
+
+@media (max-width: 991.98px) {
+    .topbar-actions {
+        width: 100%;
+        justify-content: space-between !important;
+    }
+}
