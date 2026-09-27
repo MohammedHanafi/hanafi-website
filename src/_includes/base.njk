@@ -102,5 +102,20 @@
     <script src="/lib/easing/easing.min.js"></script>
     <script src="/js/main.js"></script>
     {% if forms %}<script src="/js/forms.js"></script>{% endif %}
+
+    <!-- Netlify Identity: catches invite/confirmation/recovery links, which land on this
+         site's normal pages (not /admin), and sends a logged-in user into the editor. -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", function (user) {
+                if (!user) {
+                    window.netlifyIdentity.on("login", function () {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
 </body>
 </html>
