@@ -10,6 +10,19 @@ breadcrumbs:
     href: "/blog.html"
   - label: "Article"
 ---
+            <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Article",
+                "headline": {{ title | dump | safe }},
+                "description": {{ excerpt | dump | safe }},
+                "datePublished": "{{ date | isoDate }}",
+                "author": { "@type": "Person", "name": {{ site.name | dump | safe }} },
+                "publisher": { "@type": "Organization", "name": {{ site.name | dump | safe }} },
+                "mainEntityOfPage": "{{ site.siteUrl }}{{ page.url }}"{% if image %},
+                "image": "{{ site.siteUrl }}{{ image }}"{% endif %}
+            }
+            </script>
             <!-- Article Start -->
             <div class="container py-5 px-2 bg-white">
                 <div class="row px-4">

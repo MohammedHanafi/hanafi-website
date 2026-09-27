@@ -31,6 +31,10 @@ module.exports = function (eleventyConfig) {
     return new Date(date).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
   });
 
+  eleventyConfig.addFilter("isoDate", function (date) {
+    return new Date(date).toISOString();
+  });
+
   return {
     dir: { input: "src", includes: "_includes", data: "_data", output: "_site" },
     htmlTemplateEngine: "njk",
