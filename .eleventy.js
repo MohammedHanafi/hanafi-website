@@ -35,6 +35,13 @@ module.exports = function (eleventyConfig) {
     return new Date(date).toISOString();
   });
 
+  // Turns a pasted YouTube URL (watch, youtu.be, shorts, or already-embed) into just the video ID
+  eleventyConfig.addFilter("youtubeId", function (url) {
+    if (!url) return null;
+    const match = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/);
+    return match ? match[1] : null;
+  });
+
   return {
     dir: { input: "src", includes: "_includes", data: "_data", output: "_site" },
     htmlTemplateEngine: "njk",

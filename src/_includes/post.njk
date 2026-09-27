@@ -39,6 +39,19 @@ breadcrumbs:
                                 <span class="mr-3"><i class="fa fa-folder" aria-hidden="true"></i> {{ category }}</span>
                             </div>
 
+                            {% set videoId = video | youtubeId %}
+                            {% if videoId %}
+                            <div class="video-embed mb-4">
+                                <iframe
+                                    src="https://www.youtube.com/embed/{{ videoId }}"
+                                    title="Video for {{ title }}"
+                                    loading="lazy"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            {% endif %}
+
 {{ content | safe }}
                         </article>
                     </div>
