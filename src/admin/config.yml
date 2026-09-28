@@ -38,3 +38,41 @@ collections:
       - { label: "Excerpt", name: "excerpt", widget: "text", hint: "1-2 sentences shown on the blog list and used as the page description." }
       - { label: "Tags", name: "tags", widget: "list", default: [] }
       - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "services"
+    label: "Services page"
+    files:
+      - label: "Services and samples"
+        name: "services"
+        file: "src/_data/services.json"
+        format: "json"
+        fields:
+          - label: "Services"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Icon"
+                name: "icon"
+                widget: "select"
+                default: "fa-briefcase"
+                options:
+                  - { label: "Paint brush (design)", value: "fa-paint-brush" }
+                  - { label: "Code", value: "fa-code" }
+                  - { label: "ID card", value: "fa-id-card" }
+                  - { label: "School", value: "fa-school" }
+                  - { label: "Laptop code", value: "fa-laptop-code" }
+                  - { label: "Briefcase", value: "fa-briefcase" }
+                  - { label: "Camera", value: "fa-camera" }
+                  - { label: "Cogs", value: "fa-cogs" }
+              - label: "Samples"
+                name: "samples"
+                widget: "list"
+                required: false
+                summary: "{{fields.caption}}"
+                hint: "Add pictures of your past work for this service. They appear when a visitor taps the service."
+                fields:
+                  - { label: "Image", name: "image", widget: "image" }
+                  - { label: "Caption", name: "caption", widget: "string", required: false }

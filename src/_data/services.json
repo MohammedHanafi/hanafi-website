@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "title": "Graphic Design",
+      "icon": "fa-paint-brush",
+      "description": "Creative and professional designs for flyers, posters, logos, social media graphics, banners, and other promotional materials.",
+      "samples": []
+    },
+    {
+      "title": "Frontend Web Development",
+      "icon": "fa-code",
+      "description": "Building responsive, user-friendly, and visually appealing websites that work seamlessly across computers, tablets, and mobile devices.",
+      "samples": []
+    },
+    {
+      "title": "Passport and Biometric Birth Certificate Application",
+      "icon": "fa-id-card",
+      "description": "Assistance with the application process for passports and biometric birth certificates, ensuring accurate documentation and submission.",
+      "samples": []
+    },
+    {
+      "title": "School Management System",
+      "icon": "fa-school",
+      "description": "Digital solutions that help schools manage students, staff, attendance, fees, results, records, and other administrative activities efficiently.",
+      "samples": []
+    },
+    {
+      "title": "Custom Website Development",
+      "icon": "fa-laptop-code",
+      "description": "Designing and developing tailored websites based on your business, organization, personal, or institutional needs.",
+      "samples": []
+    }
+  ]
+}

@@ -16,46 +16,44 @@ breadcrumbs:
                 <div class="row px-3 pb-4">
                     <div class="col-12">
                         <h2 class="mb-2 font-weight-bold">Get online with a system that works for you.</h2>
-                        <p class="mb-0">Services that we offer:</p>
+                        <p class="mb-0">Services that we offer. Tap a service to see samples and get in touch.</p>
                     </div>
                 </div>
                 <div class="row px-3 pb-5">
-                    <div class="col-12">
-                        <div class="d-flex mb-4 service-item">
-                            <i class="fas fa-2x fa-paint-brush text-primary mr-4 service-icon" aria-hidden="true"></i>
-                            <div>
-                                <h3 class="h5 font-weight-bold mb-1">Graphic Design</h3>
-                                <p class="m-0">Creative and professional designs for flyers, posters, logos, social media graphics, banners, and other promotional materials.</p>
+                    <div class="col-12" id="servicesAccordion">
+                        {% for item in services.items %}
+                        {% set waMessage %}Hello, I am interested in your {{ item.title }} service.{% endset %}
+                        <div class="service-card">
+                            <button type="button" class="service-toggle" data-toggle="collapse" data-target="#service-{{ loop.index0 }}" aria-expanded="false" aria-controls="service-{{ loop.index0 }}">
+                                <i class="fas fa-2x {{ item.icon }} text-primary mr-4 service-icon" aria-hidden="true"></i>
+                                <span class="service-text">
+                                    <span class="d-block h5 font-weight-bold mb-1">{{ item.title }}</span>
+                                    <span class="d-block">{{ item.description }}</span>
+                                </span>
+                                <i class="fas fa-chevron-down service-chevron text-primary" aria-hidden="true"></i>
+                            </button>
+                            <div id="service-{{ loop.index0 }}" class="collapse" data-parent="#servicesAccordion">
+                                <div class="service-panel">
+                                    {% if item.samples and item.samples.length %}
+                                    <h3 class="h6 font-weight-bold mb-3">Samples</h3>
+                                    <div class="row">
+                                        {% for sample in item.samples %}
+                                        <div class="col-6 col-md-4 mb-3">
+                                            <figure class="service-sample m-0">
+                                                <img src="{{ sample.image }}" alt="{{ sample.caption or item.title }}" loading="lazy">
+                                                {% if sample.caption %}<figcaption class="small text-muted mt-1">{{ sample.caption }}</figcaption>{% endif %}
+                                            </figure>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    {% else %}
+                                    <p class="text-muted mb-3">Samples for this service are on the way. Message me on WhatsApp and I will share relevant work with you.</p>
+                                    {% endif %}
+                                    <a href="https://wa.me/{{ site.whatsapp }}?text={{ waMessage | urlencode }}" target="_blank" rel="noopener" class="btn btn-success"><i class="fab fa-whatsapp mr-1" aria-hidden="true"></i> Chat on WhatsApp about this service</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="d-flex mb-4 service-item">
-                            <i class="fas fa-2x fa-code text-primary mr-4 service-icon" aria-hidden="true"></i>
-                            <div>
-                                <h3 class="h5 font-weight-bold mb-1">Frontend Web Development</h3>
-                                <p class="m-0">Building responsive, user-friendly, and visually appealing websites that work seamlessly across computers, tablets, and mobile devices.</p>
-                            </div>
-                        </div>
-                        <div class="d-flex mb-4 service-item">
-                            <i class="fas fa-2x fa-id-card text-primary mr-4 service-icon" aria-hidden="true"></i>
-                            <div>
-                                <h3 class="h5 font-weight-bold mb-1">Passport and Biometric Birth Certificate Application</h3>
-                                <p class="m-0">Assistance with the application process for passports and biometric birth certificates, ensuring accurate documentation and submission.</p>
-                            </div>
-                        </div>
-                        <div class="d-flex mb-4 service-item">
-                            <i class="fas fa-2x fa-school text-primary mr-4 service-icon" aria-hidden="true"></i>
-                            <div>
-                                <h3 class="h5 font-weight-bold mb-1">School Management System</h3>
-                                <p class="m-0">Digital solutions that help schools manage students, staff, attendance, fees, results, records, and other administrative activities efficiently.</p>
-                            </div>
-                        </div>
-                        <div class="d-flex mb-4 service-item">
-                            <i class="fas fa-2x fa-laptop-code text-primary mr-4 service-icon" aria-hidden="true"></i>
-                            <div>
-                                <h3 class="h5 font-weight-bold mb-1">Custom Website Development</h3>
-                                <p class="m-0">Designing and developing tailored websites based on your business, organization, personal, or institutional needs.</p>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="row px-3 pb-5">
