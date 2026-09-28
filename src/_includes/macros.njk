@@ -1,0 +1,25 @@
+{# One article card, used on both the Home and Blog pages. #}
+{% macro postCard(post, site) %}
+{% set authorName = post.data.author or site.name %}
+<article class="post-card">
+    <div class="post-card-media">
+        {% if post.data.image %}
+        <a href="{{ post.url }}" tabindex="-1" aria-hidden="true"><img class="post-cover-img" src="{{ post.data.image }}" alt="" loading="lazy"></a>
+        {% else %}
+        <a href="{{ post.url }}" class="post-cover" tabindex="-1" aria-hidden="true"><i class="fas {{ post.data.icon or 'fa-graduation-cap' }}"></i></a>
+        {% endif %}
+        <span class="post-card-tag">{{ post.data.category }}</span>
+    </div>
+    <div class="post-card-body">
+        <h3 class="post-card-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+        <p class="post-card-excerpt">{{ post.data.excerpt }}</p>
+        <div class="post-card-footer">
+            <img class="post-card-avatar" src="/img/hanafi.jpg" width="36" height="36" alt="" loading="lazy">
+            <div>
+                <span class="post-card-author">{{ authorName }}</span>
+                <span class="post-card-date">{{ post.data.date | readableDate }}</span>
+            </div>
+        </div>
+    </div>
+</article>
+{% endmacro %}

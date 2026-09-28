@@ -290,3 +290,156 @@
         transition: none;
     }
 }
+
+/* Section heading with corner brackets (Home > Latest Articles) */
+.section-title {
+    position: relative;
+    display: inline-block;
+    margin: 0 0 2rem 1rem;
+    padding: .6rem 1.1rem;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #202C45;
+}
+
+.section-title::before,
+.section-title::after {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border: 3px solid #2A4B7C;
+}
+
+.section-title::before {
+    top: 0;
+    left: 0;
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.section-title::after {
+    right: 0;
+    bottom: 0;
+    border-left: 0;
+    border-top: 0;
+}
+
+/* Article cards (Home and Blog) */
+.post-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, .12);
+    transition: box-shadow .2s ease, transform .2s ease;
+}
+
+.post-card:hover,
+.post-card:focus-within {
+    box-shadow: 0 .5rem 1.25rem rgba(0, 0, 0, .12);
+    transform: translateY(-2px);
+}
+
+.post-card-media {
+    position: relative;
+    overflow: hidden;
+}
+
+.post-card .post-cover,
+.post-card .post-cover-img {
+    display: flex;
+    width: 100%;
+    height: 210px;
+    min-height: 0;
+    object-fit: cover;
+}
+
+.post-card-tag {
+    position: absolute;
+    left: .75rem;
+    bottom: .75rem;
+    padding: .25rem .65rem;
+    background: #2A4B7C;
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.post-card-body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    padding: 1.25rem;
+}
+
+.post-card-title {
+    margin: 0 0 .75rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.post-card-title a {
+    color: #202C45;
+}
+
+.post-card-title a:hover {
+    color: #2A4B7C;
+    text-decoration: none;
+}
+
+.post-card-excerpt {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    margin: 0 0 1.25rem;
+    font-size: .95rem;
+    color: #6c757d;
+}
+
+.post-card-footer {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+}
+
+.post-card-avatar {
+    width: 36px;
+    height: 36px;
+    margin-right: .75rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.post-card-author {
+    display: block;
+    font-size: .9rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #202C45;
+}
+
+.post-card-date {
+    display: block;
+    font-size: .75rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: #6c757d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .post-card {
+        transition: none;
+    }
+
+    .post-card:hover,
+    .post-card:focus-within {
+        transform: none;
+    }
+}

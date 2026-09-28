@@ -22,6 +22,7 @@ collections:
       - { label: "Layout", name: "layout", widget: "hidden", default: "post.njk" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Author", name: "author", widget: "string", default: "Mohammed Hanafi", hint: "Shown on the article cards." }
       - { label: "Category", name: "category", widget: "string", default: "Education" }
       - { label: "Cover image", name: "image", widget: "image", required: false, hint: "Optional. If left empty, the icon below is shown instead." }
       - { label: "Video (optional)", name: "video", widget: "string", required: false, hint: "Optional. Paste a YouTube video link (e.g. https://www.youtube.com/watch?v=xxxxxxxxxxx or a youtu.be link) to embed it near the top of the article." }

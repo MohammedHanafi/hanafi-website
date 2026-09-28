@@ -35,6 +35,11 @@ module.exports = function (eleventyConfig) {
     return new Date(date).toISOString();
   });
 
+  // First N items of a list (used to show the latest few posts on the home page)
+  eleventyConfig.addFilter("limit", function (list, count) {
+    return (list || []).slice(0, count);
+  });
+
   // Turns a pasted YouTube URL (watch, youtu.be, shorts, or already-embed) into just the video ID
   eleventyConfig.addFilter("youtubeId", function (url) {
     if (!url) return null;

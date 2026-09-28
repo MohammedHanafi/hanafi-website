@@ -10,31 +10,16 @@ breadcrumbs:
   - label: "Home"
     href: "/index.html"
   - label: "My blog"
----
+---{% from "macros.njk" import postCard %}
             <!-- Blog List Start -->
             <div class="container bg-white pt-5">
                 {% for group in collections.postsByCategory %}
-                <h2 class="h4 font-weight-bold mb-4{% if not loop.first %} mt-3{% endif %}">{{ group.category }}</h2>
-                {% for post in group.posts %}
-                <div class="row blog-item px-3 pb-5">
-                    <div class="col-md-5">
-                        {% if post.data.image %}
-                        <a href="{{ post.url }}" tabindex="-1"><img class="post-cover-img" src="{{ post.data.image }}" alt=""></a>
-                        {% else %}
-                        <a href="{{ post.url }}" class="post-cover" tabindex="-1" aria-hidden="true"><i class="fas {{ post.data.icon or 'fa-graduation-cap' }}"></i></a>
-                        {% endif %}
-                    </div>
-                    <div class="col-md-7">
-                        <h3 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold"><a href="{{ post.url }}" class="text-secondary">{{ post.data.title }}</a></h3>
-                        <div class="d-flex mb-3">
-                            <small class="mr-3 text-muted"><i class="fa fa-calendar-alt" aria-hidden="true"></i> {{ post.data.date | readableDate }}</small>
-                            <small class="mr-3 text-muted"><i class="fa fa-folder" aria-hidden="true"></i> {{ post.data.category }}</small>
-                        </div>
-                        <p>{{ post.data.excerpt }}</p>
-                        <a class="btn btn-link p-0" href="{{ post.url }}">Read article <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                    </div>
+                <h2 class="h4 font-weight-bold mb-4 px-3{% if not loop.first %} mt-3{% endif %}">{{ group.category }}</h2>
+                <div class="row px-3">
+                    {% for post in group.posts %}
+                    <div class="col-md-6 col-lg-4 mb-4 d-flex">{{ postCard(post, site) }}</div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
                 {% else %}
                 <div class="row px-3 pb-5">
                     <div class="col-12">
@@ -42,5 +27,6 @@ breadcrumbs:
                     </div>
                 </div>
                 {% endfor %}
+                <div class="pb-3"></div>
             </div>
             <!-- Blog List End -->

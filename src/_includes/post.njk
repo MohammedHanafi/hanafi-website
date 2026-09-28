@@ -17,14 +17,14 @@ breadcrumbs:
                 "headline": {{ title | dump | safe }},
                 "description": {{ excerpt | dump | safe }},
                 "datePublished": "{{ date | isoDate }}",
-                "author": { "@type": "Person", "name": {{ site.name | dump | safe }} },
+                "author": { "@type": "Person", "name": {{ (author or site.name) | dump | safe }} },
                 "publisher": { "@type": "Organization", "name": {{ site.name | dump | safe }} },
                 "mainEntityOfPage": "{{ site.siteUrl }}{{ page.url }}"{% if image %},
                 "image": "{{ site.siteUrl }}{{ image }}"{% endif %}
             }
             </script>
             <!-- Article Start -->
-            <div class="container py-5 px-2 bg-white">
+            <div class="container py-5 px-3 bg-white">
                 <div class="row px-4">
                     <div class="col-12">
                         {% if image %}
