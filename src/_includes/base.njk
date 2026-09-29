@@ -1,3 +1,4 @@
+{% from "macros.njk" import categoryNav %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,6 +86,8 @@
         </nav>
     </div>
 
+    {% if showCategoryNav %}{{ categoryNav(categories, category) }}{% endif %}
+
     {% if pageHeader %}
     <div class="container py-5 px-3 bg-primary">
         <div class="row py-5 px-4">
@@ -122,6 +125,7 @@
     <script src="/js/main.js"></script>
     {% if forms %}<script src="/js/forms.js"></script>{% endif %}
     {% if share %}<script src="/js/share.js"></script>{% endif %}
+    {% if videosPage %}<script src="/js/videos.js"></script>{% endif %}
 
     <!-- Netlify Identity: catches invite/confirmation/recovery links, which land on this
          site's normal pages (not /admin), and sends a logged-in user into the editor. -->

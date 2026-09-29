@@ -1,11 +1,12 @@
 ---
 layout: base.njk
 title: Videos
-description: "Watch videos from Mohammed Hanafi's YouTube channel, embedded here and updated automatically as new videos are uploaded."
+description: "Watch videos from Mohammed Hanafi's YouTube channel, shown here as tiles and updated automatically as new videos are uploaded."
 active: videos
 pageHeader: true
 heading: "Videos"
 permalink: /videos.html
+videosPage: true
 breadcrumbs:
   - label: "Home"
     href: "/index.html"
@@ -16,22 +17,26 @@ breadcrumbs:
                 <div class="row px-3 pb-4">
                     <div class="col-12">
                         <p class="mb-4">
-                            The videos below are pulled directly from my YouTube channel, so anything I upload there appears here automatically.
+                            These are pulled directly from my YouTube channel, so anything I upload there appears here automatically. Tap one to play it.
                         </p>
                     </div>
                 </div>
-                <div class="row px-3 pb-4">
-                    <div class="col-12">
-                        <div class="video-embed">
-                            <iframe
-                                src="https://www.youtube.com/embed/videoseries?list={{ site.youtubeUploadsPlaylist }}"
-                                title="{{ site.name }} on YouTube"
-                                loading="lazy"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen>
-                            </iframe>
-                        </div>
+                <div class="row px-3">
+                    {% for v in videos %}
+                    <div class="col-6 col-md-4 col-lg-3 mb-4">
+                        <button type="button" class="video-tile" data-toggle="modal" data-target="#videoModal" data-video-id="{{ v.id }}" aria-label="Play: {{ v.title }}">
+                            <span class="video-tile-thumb">
+                                <img src="{{ v.thumbnail }}" alt="" loading="lazy">
+                                <span class="video-tile-play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                            </span>
+                            <span class="video-tile-title">{{ v.title }}</span>
+                        </button>
                     </div>
+                    {% else %}
+                    <div class="col-12">
+                        <p class="text-muted mb-4">Videos couldn't be loaded right now.</p>
+                    </div>
+                    {% endfor %}
                 </div>
                 <div class="row px-3">
                     <div class="col-12">
@@ -40,3 +45,15 @@ breadcrumbs:
                 </div>
             </div>
             <!-- Videos End -->
+
+            <!-- Video player modal -->
+            <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                    <div class="modal-content bg-dark border-0">
+                        <button type="button" class="close text-white p-2" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="video-embed" id="videoModalEmbed"></div>
+                    </div>
+                </div>
+            </div>

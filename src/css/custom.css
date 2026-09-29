@@ -443,3 +443,136 @@
         transform: none;
     }
 }
+
+/* Category sub-nav (shown under the main nav on Home, Blog, and category pages) */
+.category-nav {
+    background: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.category-nav-inner {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+}
+
+.category-nav-link {
+    flex: 0 0 auto;
+    padding: .85rem 1.1rem;
+    color: #495057;
+    font-weight: 600;
+    font-size: .95rem;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+}
+
+.category-nav-link:hover {
+    color: #2A4B7C;
+    text-decoration: none;
+}
+
+.category-nav-link.active {
+    color: #202C45;
+    background: rgba(42, 75, 124, .08);
+    border-bottom-color: #2A4B7C;
+}
+
+/* Video tiles (Videos page) */
+.video-tile {
+    display: block;
+    width: 100%;
+    padding: 0;
+    background: none;
+    border: 0;
+    text-align: left;
+    cursor: pointer;
+}
+
+.video-tile-thumb {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding-top: 56.25%;
+    overflow: hidden;
+    background: #202C45;
+}
+
+.video-tile-thumb img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-tile-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, .6);
+    border-radius: 50%;
+    color: #fff;
+    font-size: .9rem;
+    transition: background .2s ease, transform .2s ease;
+}
+
+.video-tile:hover .video-tile-play,
+.video-tile:focus .video-tile-play {
+    background: #2A4B7C;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.video-tile-title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    margin-top: .6rem;
+    font-size: .9rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #202C45;
+}
+
+/* Video modal player */
+#videoModal .modal-content {
+    overflow: hidden;
+}
+
+#videoModal .close {
+    position: absolute;
+    top: .25rem;
+    right: .5rem;
+    z-index: 1;
+    opacity: .85;
+    text-shadow: none;
+}
+
+#videoModal .close:hover {
+    opacity: 1;
+}
+
+#videoModalEmbed:empty {
+    display: none;
+}
+
+#videoModalEmbed .video-embed,
+#videoModalEmbed iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .video-tile-play {
+        transition: none;
+    }
+}

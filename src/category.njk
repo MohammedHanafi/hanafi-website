@@ -1,0 +1,37 @@
+---
+layout: base.njk
+active: blog
+pageHeader: true
+showCategoryNav: true
+permalink: "/category/{{ category | slugify }}/"
+pagination:
+  data: categories
+  size: 1
+  alias: category
+eleventyComputed:
+  title: "{{ category }}"
+  heading: "{{ category }}"
+  description: "Posts in the {{ category }} category on {{ site.name }}'s blog."
+  breadcrumbs:
+    - label: "Home"
+      href: "/index.html"
+    - label: "Blog"
+      href: "/blog.html"
+    - label: "{{ category }}"
+---
+{% from "macros.njk" import postCard %}
+            <!-- Category List Start -->
+            <div class="container bg-white pt-5">
+                <div class="row px-3">
+                    {% set catPosts = collections.postsByCategory | postsInCategory(category) %}
+                    {% for post in catPosts %}
+                    <div class="col-md-6 col-lg-4 mb-4 d-flex">{{ postCard(post, site) }}</div>
+                    {% else %}
+                    <div class="col-12">
+                        <p class="text-muted m-0">No articles published in {{ category }} yet. Check back soon.</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="pb-3"></div>
+            </div>
+            <!-- Category List End -->

@@ -23,3 +23,17 @@
     </div>
 </article>
 {% endmacro %}
+
+{# Secondary nav row listing post categories, with the current one (if any) highlighted. #}
+{% macro categoryNav(categories, active) %}
+<div class="category-nav">
+    <div class="container">
+        <nav class="category-nav-inner" aria-label="Post categories">
+            <a href="/blog.html" class="category-nav-link{% if not active %} active{% endif %}">All</a>
+            {% for cat in categories %}
+            <a href="/category/{{ cat | slugify }}/" class="category-nav-link{% if active == cat %} active{% endif %}">{{ cat }}</a>
+            {% endfor %}
+        </nav>
+    </div>
+</div>
+{% endmacro %}
