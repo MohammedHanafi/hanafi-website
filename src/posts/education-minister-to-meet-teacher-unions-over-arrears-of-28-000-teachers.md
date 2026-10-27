@@ -1,55 +1,52 @@
 ---
 layout: post.njk
-title: Education Minister to Meet Teacher Unions Over Arrears of 28,000 Teachers
+title: GES Announces November 16 Payment Date for Outstanding 2025 Teacher
+  Promotion Arrears
 date: 2026-10-27
 author: Mohammed Hanafi
 category: Education
-image: /img/uploads/whatsapp-image-2026-10-27-at-4.51.13-pm.jpeg
+image: /img/uploads/images.jpeg
 icon: fa-graduation-cap
-excerpt: Education Minister Haruna Iddrisu is meeting teacher unions over
-  validation delays affecting promotion salary arrears for 28,000 teachers, with
-  payments targeted for November.
+excerpt: GES says outstanding 2025 teacher promotion arrears are targeted for
+  payment on November 16, 2026, as the CAGD payment system reopens on October
+  28.
 tags:
-  - Haruna Iddrisu
-  - Teacher Promotion Arrears
-  - Teacher unions
-  - Ministry of Education
-  - Payroll validation
+  - Ghana Education Service
+  - GES
+  - Teacher Promotion arrears
+  - CAGD
+  - 2025 promotion
 ---
-**Education Minister Haruna Iddrisu has announced an emergency meeting with teacher union leaders on Tuesday, October 27, 2026, to address outstanding validation issues delaying the payment of promotion salary arrears to approximately 28,000 teachers.**
+**The Ghana Education Service (GES) has announced November 16, 2026, as the target date for paying outstanding promotion salary arrears owed to affected staff, following renewed efforts to resolve delays in the payment process.**
 
-The meeting is expected to focus on resolving challenges that have prevented the affected teachers from completing the validation process required to receive their outstanding payments.
+In a letter dated October 27, 2026, and addressed to all Regional Directors, GES Management said it was working with the Controller and Accountant-General’s Department (CAGD) to ensure that staff who have yet to receive their 2025 promotion arrears are paid.
 
-Speaking on Joy FM’s *Super Morning Show*, Mr Iddrisu said he had contacted the teacher unions to arrange the engagement and find a way forward.
+The announcement is expected to provide further clarity for teachers and other affected staff who have been waiting for their outstanding payments.
 
-“I am compelled to invite the teacher unions to an emergency meeting this morning. I have reached out to them,” he stated.
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9581799671540485"\    crossorigin="anonymous"></script>
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9581799671540485"
+![](/img/uploads/whatsapp-image-2026-10-27-at-4.13.45-pm.jpeg)
 
-\    crossorigin="anonymous"></script>
+According to the letter, the Controller and Accountant-General’s Department’s payment system had been closed for the processing of October salaries at a time when additional inputs were expected.
 
-According to the Education Minister, the government has already paid promotion salary arrears to 52,000 teachers who successfully completed the required validation process.
+GES explained that the system would reopen on Wednesday, October 28, 2026, to allow the necessary inputs to be made and facilitate payment to affected staff by November 16.
 
-He explained that the payments were made by October 16, while approximately 28,000 cases remain outstanding out of the roughly 80,000 claims submitted.
+The reopening is expected to provide an opportunity for outstanding cases to be processed in collaboration with the relevant authorities.
 
-“The 52,000 promotion arrears on the new grade were honoured by the government and paid by the government by October 16,” he said.
+GES Management also assured affected staff that discrepancies identified in the promotion arrears payments made on October 16, 2026, would be corrected accordingly.
 
-Mr Iddrisu added that the remaining cases include some non-teaching staff and individuals whose validation processes have not been completed.
+The assurance comes as some staff continue to seek clarification and resolution of issues relating to their promotion salary arrears.
 
-As a result, the outstanding payments cannot be processed until the necessary requirements are fulfilled.
+The Service said efforts were being made to address the outstanding cases and expressed regret over the delays and inconvenience caused.
 
-The Minister indicated that the government could reprocess the outstanding payments once the validation challenges are resolved.
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9581799671540485"\    crossorigin="anonymous"></script>
 
-He said the target was to make the payments by mid-November or, at the latest, by the end of November.
+Based on the GES announcement:
 
-He also mentioned the possibility of considering a supplementary allocation for October as an alternative to facilitate payments to the affected staff.
+* **October 28, 2026:** The CAGD payment system is scheduled to reopen for the necessary inputs.
+* **November 16, 2026:** The target date for payment of outstanding 2025 promotion arrears.
+* **Outstanding discrepancies:** Issues identified in the October 16 payments are expected to be rectified.
 
-The proposed options are expected to form part of the discussions with the teacher unions as the government seeks to address the outstanding cases.
+Affected staff should continue to follow official communications from GES and the relevant regional offices for further updates.
 
-The planned meeting comes after teachers suspended industrial action over delays in the payment of their promotion salary arrears.
-
-Mr Iddrisu appealed to the affected teachers not to resume the strike, assuring them that the government’s engagement with their union leadership was intended to help resolve the matter.
-
-The outcome of Tuesday’s meeting is expected to clarify the next steps for completing validation and processing the outstanding payments.
-
-For the affected teachers, the key concern remains the timely resolution of the documentation and validation challenges so they can receive the arrears owed to them.
+Although the announcement sets a target date, the actual processing and payment of individual cases will depend on the necessary inputs being made and the outstanding issues being resolved.
