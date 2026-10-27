@@ -4,7 +4,7 @@ title: "BREAKING: Michael Carrick to Remain in Charge for Manchester United’s
   Clash Against Chelsea  Manchester United manage"
 date: 2026-10-27
 author: Mohammed Hanafi
-category: Education
+category: Sports
 image: /img/uploads/514668.jpg
 icon: fa-bullhorn
 excerpt: Michael Carrick is expected to remain in charge of Manchester United
