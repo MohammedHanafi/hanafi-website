@@ -1,10 +1,45 @@
 [build]
-  command = "npm run build"
+  # 1) shrink uploaded pictures  2) build the site  3) minify the CSS.
+  # Steps 1 and 3 are optional extras: if they fail, the site still builds without them.
+  command = "(python3 scripts/optimize.py images || true) && npm run build && (python3 scripts/optimize.py minify || true)"
   publish = "_site"
 
 [build.environment]
   NODE_VERSION = "20"
 
+# Old .html addresses (from the first version of the site) now forward to the clean ones.
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about.html"
+  to = "/about/"
+  status = 301
+
+[[redirects]]
+  from = "/blog.html"
+  to = "/blog/"
+  status = 301
+
+[[redirects]]
+  from = "/contact.html"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/services.html"
+  to = "/services/"
+  status = 301
+
+[[redirects]]
+  from = "/videos.html"
+  to = "/videos/"
+  status = 301
+
+# Keep this last: anything else that does not exist shows the custom 404 page.
 [[redirects]]
   from = "/*"
   to = "/404.html"

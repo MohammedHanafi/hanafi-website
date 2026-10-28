@@ -1,5 +1,6 @@
 {
   "name": "Mohammed Hanafi",
+  "brand": "Alks Systems",
   "siteUrl": "https://alks-systems.netlify.app",
   "email": "hanafim58@gmail.com",
   "phone": "+233 243 131 945",
@@ -10,5 +11,8 @@
   "instagram": "https://www.instagram.com/mohammedhanafi352",
   "youtube": "https://www.youtube.com/@hanafimohammad9597",
   "youtubeChannelId": "UCYrPJYlpWsW2W6K2aIY-yvg",
-  "whatsapp": "233243131945"
+  "whatsapp": "233243131945",
+  "googleAnalyticsId": "G-LZKGB8H0X7",
+  "googleSiteVerification": "",
+  "adsensePublisherId": "ca-pub-9581799671540485"
 }

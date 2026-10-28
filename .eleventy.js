@@ -1,3 +1,6 @@
+const fs = require("fs");
+const path = require("path");
+
 module.exports = function (eleventyConfig) {
   // Static assets copied as-is into the built site
   eleventyConfig.addPassthroughCopy("src/css");
@@ -58,6 +61,35 @@ module.exports = function (eleventyConfig) {
   // First N items of a list (used to show the latest few posts on the home page)
   eleventyConfig.addFilter("limit", function (list, count) {
     return (list || []).slice(0, count);
+  });
+
+  // Text -> JSON string that is safe to place inside a <script type="application/ld+json"> block
+  eleventyConfig.addFilter("jsonSafe", function (value) {
+    return JSON.stringify(value === undefined || value === null ? "" : value).replace(/</g, "\\u003c");
+  });
+
+  // srcset for an uploaded picture. scripts/optimize.py (run during the Netlify build) makes a
+  // 800px copy and records real widths in src/_data/imageWidths.json. If that has not happened
+  // (or the picture is small) this returns "" and the page just uses the single image.
+  let imageWidths = null;
+  function loadImageWidths() {
+    if (imageWidths) return imageWidths;
+    try {
+      imageWidths = JSON.parse(fs.readFileSync(path.join("src", "_data", "imageWidths.json"), "utf8"));
+    } catch (err) {
+      imageWidths = {};
+    }
+    return imageWidths;
+  }
+  eleventyConfig.addFilter("imgSrcset", function (src) {
+    if (!src || typeof src !== "string") return "";
+    const match = src.match(/^(.*)\.(jpe?g|png)$/i);
+    if (!match) return "";
+    const width = loadImageWidths()[src];
+    if (!width || width <= 800) return "";
+    const small = match[1] + "-800." + match[2];
+    if (!fs.existsSync(path.join("src", small))) return "";
+    return small + " 800w, " + src + " " + width + "w";
   });
 
   // Turns a pasted YouTube URL (watch, youtu.be, shorts, or already-embed) into just the video ID

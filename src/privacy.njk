@@ -1,0 +1,80 @@
+---
+layout: base.njk
+title: Privacy Policy
+description: "How this website handles personal information: contact and newsletter forms, analytics cookies, third-party services, and your choices."
+pageHeader: true
+heading: "Privacy Policy"
+permalink: "/privacy/"
+updated: 2026-10-27
+breadcrumbs:
+  - label: "Home"
+    href: "/"
+  - label: "Privacy Policy"
+---
+            <div class="container bg-white py-5 px-3">
+                <div class="row px-3">
+                    <div class="col-12">
+                        <div class="policy-body article-body">
+                            <p class="text-muted">Last updated: {{ updated | readableDate }}</p>
+
+                            <p>
+                                This website is run by {{ site.name }} ({{ site.brand }}), {{ site.address }}.
+                                This page explains what personal information the site collects, why, and what choices you have.
+                                You can contact me at <a href="mailto:{{ site.email }}">{{ site.email }}</a> about anything on this page.
+                            </p>
+
+                            <h2>Information you send me</h2>
+                            <ul>
+                                <li><strong>Contact form:</strong> your name, email address, subject and message. I use it only to read and reply to your message.</li>
+                                <li><strong>Newsletter form:</strong> your email address. I use it to send you new articles from this site.</li>
+                                <li><strong>WhatsApp:</strong> the buttons on the Services page open a chat with me on WhatsApp. Anything you send there is handled by WhatsApp under its own privacy policy.</li>
+                            </ul>
+                            <p>
+                                The two forms on this site are collected and stored by Netlify, the company that hosts the website.
+                                I keep messages and email addresses only as long as needed for the purpose above, and I delete them when you ask.
+                            </p>
+
+                            <h2>Analytics and cookies</h2>
+                            <ul>
+                                <li><strong>Google Analytics</strong> sets cookies to count visits and see which pages are read. It only runs if you press <em>Accept</em> in the cookie banner. If you decline, it does not load. You can change your choice at any time with <em>Cookie settings</em> in the footer.</li>
+                                <li><strong>Cloudflare Web Analytics</strong> measures page views without cookies and without tracking you across other websites.</li>
+                            </ul>
+                            <p>
+                                Your choice is remembered in your browser (local storage), not on my servers.
+                            </p>
+
+                            <h2>Other services this site uses</h2>
+                            <p>To display pages, your browser connects to the companies below, which can see your IP address and browser details when it does:</p>
+                            <ul>
+                                <li><strong>Netlify</strong> hosts the website.</li>
+                                <li><strong>Google Fonts</strong> supplies the text font.</li>
+                                <li><strong>Cloudflare (cdnjs)</strong>, <strong>jsDelivr</strong> and <strong>jQuery CDN</strong> supply icons and page scripts.</li>
+                                <li><strong>YouTube</strong> supplies video thumbnails on the Videos page. A video player is only loaded when you choose to play a video, or on an article that has a video embedded in it. Embedded videos use YouTube's privacy-enhanced mode.</li>
+                            </ul>
+                            <p>The share buttons under articles are plain links. They send nothing to social networks unless you click them.</p>
+{% if site.adsensePublisherId %}
+                            <h2>Advertising</h2>
+                            <p>
+                                This site shows ads served by Google AdSense. Google and its partners may use cookies to show ads based on your visits to this and other websites.
+                                You can manage this in the consent message shown to visitors in Europe, and you can opt out of personalised ads at
+                                <a href="https://adssettings.google.com" target="_blank" rel="noopener">adssettings.google.com</a>.
+                                You can read how Google uses information from sites that use its services at
+                                <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">policies.google.com/technologies/partner-sites</a>.
+                            </p>
+{% endif %}
+                            <h2>Your rights</h2>
+                            <p>
+                                You can ask me to show you the personal information I hold about you, correct it, or delete it, by emailing
+                                <a href="mailto:{{ site.email }}">{{ site.email }}</a>. These rights are protected by Ghana's Data Protection Act, 2012 (Act 843) and by similar laws in other countries.
+                                If you are not happy with how your information is handled you can also complain to the Data Protection Commission of Ghana.
+                            </p>
+
+                            <h2>Children</h2>
+                            <p>This website is not aimed at children, and I do not knowingly collect information from them.</p>
+
+                            <h2>Changes to this page</h2>
+                            <p>If how the site handles information changes, I will update this page and the date at the top.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>

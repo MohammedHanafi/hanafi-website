@@ -576,3 +576,65 @@
         transition: none;
     }
 }
+
+/* Cookie consent banner and footer links */
+.consent-banner {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1060;
+    padding: .9rem 0;
+    background: #fff;
+    border-top: 3px solid #2A4B7C;
+    box-shadow: 0 -.5rem 1.25rem rgba(0, 0, 0, .15);
+}
+
+.consent-banner[hidden] {
+    display: none !important;
+}
+
+.consent-text {
+    flex: 1 1 22rem;
+    font-size: .9rem;
+}
+
+.consent-actions {
+    flex: 0 0 auto;
+    margin-top: .5rem;
+}
+
+.footer-link-button {
+    padding: 0;
+    background: none;
+    border: 0;
+    color: #fff;
+    text-decoration: underline;
+    cursor: pointer;
+    font: inherit;
+}
+
+.footer-link-button:hover {
+    color: rgba(255, 255, 255, .8);
+}
+
+.footer-links a {
+    text-decoration: underline;
+}
+
+/* Privacy policy text */
+.policy-body h2 {
+    margin-top: 2rem;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.policy-body h3 {
+    margin-top: 1.25rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.policy-body ul {
+    padding-left: 1.25rem;
+}

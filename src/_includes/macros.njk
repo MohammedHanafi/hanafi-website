@@ -1,10 +1,11 @@
 {# One article card, used on both the Home and Blog pages. #}
-{% macro postCard(post, site) %}
+{% macro postCard(post, site, priority) %}
 {% set authorName = post.data.author or site.name %}
+{% set srcset = post.data.image | imgSrcset %}
 <article class="post-card">
     <div class="post-card-media">
         {% if post.data.image %}
-        <a href="{{ post.url }}" tabindex="-1" aria-hidden="true"><img class="post-cover-img" src="{{ post.data.image }}" alt="" loading="lazy"></a>
+        <a href="{{ post.url }}" tabindex="-1" aria-hidden="true"><img class="post-cover-img" src="{{ post.data.image }}"{% if srcset %} srcset="{{ srcset }}" sizes="(min-width: 992px) 360px, (min-width: 768px) 50vw, 100vw"{% endif %} alt=""{% if priority %} fetchpriority="high"{% else %} loading="lazy"{% endif %}></a>
         {% else %}
         <a href="{{ post.url }}" class="post-cover" tabindex="-1" aria-hidden="true"><i class="fas {{ post.data.icon or 'fa-graduation-cap' }}"></i></a>
         {% endif %}
@@ -14,7 +15,7 @@
         <h3 class="post-card-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
         <p class="post-card-excerpt">{{ post.data.excerpt }}</p>
         <div class="post-card-footer">
-            <img class="post-card-avatar" src="/img/hanafi.jpg" width="36" height="36" alt="" loading="lazy">
+            <img class="post-card-avatar" src="/img/avatar.jpg" width="36" height="36" alt="" loading="lazy">
             <div>
                 <span class="post-card-author">{{ authorName }}</span>
                 <span class="post-card-date">{{ post.data.date | readableDate }}</span>
@@ -29,7 +30,7 @@
 <div class="category-nav">
     <div class="container">
         <nav class="category-nav-inner" aria-label="Post categories">
-            <a href="/blog.html" class="category-nav-link{% if not active %} active{% endif %}">All</a>
+            <a href="/blog/" class="category-nav-link{% if not active %} active{% endif %}">All</a>
             {% for cat in categories %}
             <a href="/category/{{ cat | slugify }}/" class="category-nav-link{% if active == cat %} active{% endif %}">{{ cat }}</a>
             {% endfor %}

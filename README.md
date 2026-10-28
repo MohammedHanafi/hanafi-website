@@ -70,3 +70,18 @@ Buy a domain from any registrar (Namecheap, Cloudflare, etc.), then in Netlify g
 
 - The Twitter and LinkedIn links use the handles from the original site; Facebook and Instagram were left out because the original links weren't valid — add them in `src/_data/site.json` once you have the correct profile URLs.
 - Post cover images: posts currently render a simple icon cover instead of a photo. To use a real photo per post, add an `image` field in `src/admin/config.yml`'s field list (widget: `image`) and reference `post.data.image` in `blog.njk` and `_includes/post.njk`.
+
+## Search, ads and privacy settings
+
+Everything below lives in `src/_data/site.json`. Empty values mean "switched off".
+
+- `googleSiteVerification` — paste only the `content` value of the tag Google Search Console gives you (the long code). It is added to every page.
+- `adsensePublisherId` — your AdSense ID, e.g. `ca-pub-1234567890123456`. When set, the AdSense script is added to every page `<head>`, `/ads.txt` is filled in, and the privacy policy gains an Advertising section.
+- `googleAnalyticsId` — Google Analytics only loads after a visitor presses Accept in the cookie banner.
+- `siteUrl` — the main address of the site. Change it when you add a custom domain (it feeds the sitemap, canonical tags and structured data).
+
+## What happens during a build
+
+`netlify.toml` runs `scripts/optimize.py` before and after the site is built: uploaded pictures are resized/compressed (nothing wider than 1600px, plus an 800px copy for phones) and the CSS is minified. If Python or Pillow is not available on the build machine, those steps are skipped with a warning and the site still builds.
+
+Page addresses are clean (`/about/`, `/blog/`, ...). The old `.html` addresses redirect to them.

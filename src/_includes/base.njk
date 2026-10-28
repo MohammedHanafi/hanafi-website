@@ -1,18 +1,24 @@
 {% from "macros.njk" import categoryNav %}
+{% set hideFromSearch = noindex or (category and ((collections.postsByCategory | postsInCategory(category) | length) == 0)) %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-ga-id="{{ site.googleAnalyticsId }}">
 <head>
     <meta charset="utf-8">
     <title>{{ title }} | {{ site.name }}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="description" content="{{ description or excerpt }}">
-    <meta name="author" content="{{ site.name }}">
+    <meta name="author" content="{{ author or site.name }}">
     <meta name="theme-color" content="#2A4B7C">
-    <meta property="og:type" content="website">
+    {% if hideFromSearch %}<meta name="robots" content="noindex">{% else %}<meta name="robots" content="index, follow, max-image-preview:large">{% endif %}
+    {% if site.googleSiteVerification %}<meta name="google-site-verification" content="{{ site.googleSiteVerification }}">{% endif %}
+    <meta property="og:type" content="{{ ogType or 'website' }}">
+    <meta property="og:site_name" content="{{ site.brand }}">
     <meta property="og:title" content="{{ title }} | {{ site.name }}">
     <meta property="og:description" content="{{ description or excerpt }}">
     <meta property="og:url" content="{{ site.siteUrl }}{{ page.url }}">
-    <meta property="og:image" content="{{ site.siteUrl }}{{ image or '/img/alks-logo.png' }}">
+    <meta property="og:image" content="{{ site.siteUrl }}{{ image or '/img/og-default.jpg' }}">
+    {% if ogType == 'article' %}<meta property="article:published_time" content="{{ date | isoDate }}">{% endif %}
+    {% if ogType == 'article' and updated %}<meta property="article:modified_time" content="{{ updated | isoDate }}">{% endif %}
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="{{ site.siteUrl }}{{ page.url }}">
 
@@ -20,14 +26,12 @@
     <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1a8395c77b2040128248f60ce5999704"}'></script>
     <!-- End Cloudflare Web Analytics -->
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LZKGB8H0X7"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-LZKGB8H0X7');
-    </script>
+    <!-- Google Analytics is loaded by /js/consent.js, and only after the visitor accepts. -->
+
+    {% if site.adsensePublisherId %}
+    <!-- Google AdSense (turns on when adsensePublisherId is set in src/_data/site.json) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.adsensePublisherId }}" crossorigin="anonymous"></script>
+    {% endif %}
 
     <link href="/favicon.ico" rel="icon" sizes="any">
     <link href="/favicon.svg" rel="icon" type="image/svg+xml">
@@ -49,8 +53,8 @@
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-between py-3">
                 <div class="d-flex align-items-center topbar-profile mb-2 mb-lg-0">
-                    <a href="/index.html" class="d-inline-block">
-                        <img class="topbar-logo" src="/img/alks-logo.png" width="600" height="432" alt="Alks Systems">
+                    <a href="/" class="d-inline-block">
+                        <img class="topbar-logo" src="/img/alks-logo-header.png" width="156" height="112" alt="Alks Systems">
                     </a>
                     <h1 class="sr-only">Alks Systems</h1>
                 </div>
@@ -61,7 +65,7 @@
                         <a class="btn btn-outline-primary btn-sm mr-2 mb-2 mb-lg-0" href="{{ site.instagram }}" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a class="btn btn-outline-primary btn-sm mr-2 mb-2 mb-lg-0" href="{{ site.youtube }}" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
-                    <a href="/contact.html" class="btn btn-primary">Hire Me</a>
+                    <a href="/contact/" class="btn btn-primary">Hire Me</a>
                 </div>
             </div>
         </div>
@@ -69,18 +73,18 @@
 
     <div class="container p-0">
         <nav class="navbar navbar-expand-lg bg-secondary navbar-dark" aria-label="Main navigation">
-            <a href="/index.html" class="navbar-brand d-block d-lg-none">Menu</a>
+            <a href="/" class="navbar-brand d-block d-lg-none">Menu</a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav m-auto">
-                    <a href="/index.html" class="nav-item nav-link{% if active == 'home' %} active{% endif %}"{% if active == 'home' %} aria-current="page"{% endif %}>Home</a>
-                    <a href="/services.html" class="nav-item nav-link{% if active == 'services' %} active{% endif %}"{% if active == 'services' %} aria-current="page"{% endif %}>Services</a>
-                    <a href="/blog.html" class="nav-item nav-link{% if active == 'blog' %} active{% endif %}"{% if active == 'blog' %} aria-current="page"{% endif %}>Blog</a>
-                    <a href="/videos.html" class="nav-item nav-link{% if active == 'videos' %} active{% endif %}"{% if active == 'videos' %} aria-current="page"{% endif %}>Videos</a>
-                    <a href="/contact.html" class="nav-item nav-link{% if active == 'contact' %} active{% endif %}"{% if active == 'contact' %} aria-current="page"{% endif %}>Contact</a>
-                    <a href="/about.html" class="nav-item nav-link{% if active == 'about' %} active{% endif %}"{% if active == 'about' %} aria-current="page"{% endif %}>About</a>
+                    <a href="/" class="nav-item nav-link{% if active == 'home' %} active{% endif %}"{% if active == 'home' %} aria-current="page"{% endif %}>Home</a>
+                    <a href="/services/" class="nav-item nav-link{% if active == 'services' %} active{% endif %}"{% if active == 'services' %} aria-current="page"{% endif %}>Services</a>
+                    <a href="/blog/" class="nav-item nav-link{% if active == 'blog' %} active{% endif %}"{% if active == 'blog' %} aria-current="page"{% endif %}>Blog</a>
+                    <a href="/videos/" class="nav-item nav-link{% if active == 'videos' %} active{% endif %}"{% if active == 'videos' %} aria-current="page"{% endif %}>Videos</a>
+                    <a href="/contact/" class="nav-item nav-link{% if active == 'contact' %} active{% endif %}"{% if active == 'contact' %} aria-current="page"{% endif %}>Contact</a>
+                    <a href="/about/" class="nav-item nav-link{% if active == 'about' %} active{% endif %}"{% if active == 'about' %} aria-current="page"{% endif %}>About</a>
                 </div>
             </div>
         </nav>
@@ -113,8 +117,27 @@
 
     <div class="container py-4 bg-secondary text-center">
         <p class="m-0 text-white">
-            &copy; <span class="js-year">2026</span> <a class="text-white font-weight-bold" href="/index.html">{{ site.name }}</a>. All Rights Reserved. Designed by <a class="text-white font-weight-bold" href="https://alkssystems.com" target="_blank" rel="noopener">Alks-Systems</a>
+            &copy; <span class="js-year">2026</span> <a class="text-white font-weight-bold" href="/">{{ site.name }}</a>. All Rights Reserved. Designed by <a class="text-white font-weight-bold" href="https://alkssystems.com" target="_blank" rel="noopener">Alks-Systems</a>
         </p>
+        <p class="m-0 mt-2 footer-links">
+            <a class="text-white" href="/privacy/">Privacy Policy</a>
+            <span class="text-white-50 px-2" aria-hidden="true">|</span>
+            <button type="button" class="footer-link-button" data-consent-open>Cookie settings</button>
+        </p>
+    </div>
+
+    <!-- Cookie consent: Google Analytics only runs if the visitor accepts -->
+    <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
+        <div class="container d-flex flex-wrap align-items-center justify-content-between">
+            <p class="consent-text m-0 mr-3">
+                I use Google Analytics cookies to see how the site is used. They are only set if you accept.
+                <a href="/privacy/">Privacy policy</a>
+            </p>
+            <div class="consent-actions">
+                <button type="button" class="btn btn-primary btn-sm mr-2" data-consent="accept">Accept</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-consent="decline">Decline</button>
+            </div>
+        </div>
     </div>
 
     <a href="#" class="back-to-top" aria-label="Back to top"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
@@ -123,23 +146,29 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/lib/easing/easing.min.js"></script>
     <script src="/js/main.js"></script>
+    <script src="/js/consent.js"></script>
     {% if forms %}<script src="/js/forms.js"></script>{% endif %}
     {% if share %}<script src="/js/share.js"></script>{% endif %}
     {% if videosPage %}<script src="/js/videos.js"></script>{% endif %}
 
-    <!-- Netlify Identity: catches invite/confirmation/recovery links, which land on this
-         site's normal pages (not /admin), and sends a logged-in user into the editor. -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <!-- Netlify Identity: only needed when you open an invite / confirmation / recovery link
+         from an email (those land on a normal page, not /admin). For everyone else the widget
+         is never downloaded. -->
     <script>
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", function (user) {
-                if (!user) {
-                    window.netlifyIdentity.on("login", function () {
-                        document.location.href = "/admin/";
-                    });
-                }
-            });
-        }
+        (function () {
+            if (!/(invite_token|confirmation_token|recovery_token|email_change_token|access_token)=/.test(window.location.hash || "")) { return; }
+            var widget = document.createElement("script");
+            widget.src = "https://identity.netlify.com/v1/netlify-identity-widget.js";
+            widget.onload = function () {
+                if (!window.netlifyIdentity) { return; }
+                window.netlifyIdentity.on("init", function (user) {
+                    if (!user) {
+                        window.netlifyIdentity.on("login", function () { document.location.href = "/admin/"; });
+                    }
+                });
+            };
+            document.body.appendChild(widget);
+        })();
     </script>
 </body>
 </html>

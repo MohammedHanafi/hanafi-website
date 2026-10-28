@@ -5,9 +5,32 @@ description: "Personal blog of Mohammed Hanafi, a frontend developer, entreprene
 active: home
 showCategoryNav: true
 forms: true
-permalink: /index.html
+permalink: "/"
 ---
 {% from "macros.njk" import postCard %}
+            <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@graph": [
+                    {
+                        "@type": "Organization",
+                        "@id": "{{ site.siteUrl }}/#organization",
+                        "name": {{ site.brand | jsonSafe | safe }},
+                        "url": "{{ site.siteUrl }}/",
+                        "logo": "{{ site.siteUrl }}/img/alks-logo.png",
+                        "sameAs": [{{ site.twitter | jsonSafe | safe }}, {{ site.facebook | jsonSafe | safe }}, {{ site.instagram | jsonSafe | safe }}, {{ site.youtube | jsonSafe | safe }}]
+                    },
+                    {
+                        "@type": "WebSite",
+                        "@id": "{{ site.siteUrl }}/#website",
+                        "url": "{{ site.siteUrl }}/",
+                        "name": {{ site.brand | jsonSafe | safe }},
+                        "publisher": { "@id": "{{ site.siteUrl }}/#organization" },
+                        "inLanguage": "en"
+                    }
+                ]
+            }
+            </script>
             <!-- Latest Articles Start -->
             <div class="container bg-white pt-5">
                 <div class="px-3">
@@ -15,7 +38,7 @@ permalink: /index.html
                 </div>
                 <div class="row px-3">
                     {% for post in collections.posts | limit(6) %}
-                    <div class="col-md-6 col-lg-4 mb-4 d-flex">{{ postCard(post, site) }}</div>
+                    <div class="col-md-6 col-lg-4 mb-4 d-flex">{{ postCard(post, site, loop.index0 < 3) }}</div>
                     {% else %}
                     <div class="col-12">
                         <p class="text-muted m-0">No articles published yet. Check back soon.</p>
@@ -24,7 +47,7 @@ permalink: /index.html
                 </div>
                 {% if (collections.posts | length) > 6 %}
                 <div class="px-3 pb-4">
-                    <a href="/blog.html" class="btn btn-primary">View all articles</a>
+                    <a href="/blog/" class="btn btn-primary">View all articles</a>
                 </div>
                 {% else %}
                 <div class="pb-3"></div>

@@ -22,6 +22,7 @@ collections:
       - { label: "Layout", name: "layout", widget: "hidden", default: "post.njk" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Last updated", name: "updated", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: false, hint: "Optional. Set this when you make a real change to an old article; search engines use it." }
       - { label: "Author", name: "author", widget: "string", default: "Mohammed Hanafi", hint: "Shown on the article cards." }
       - label: "Category"
         name: "category"

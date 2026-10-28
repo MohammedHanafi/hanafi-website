@@ -4,16 +4,22 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url><loc>{{ site.siteUrl }}/index.html</loc></url>
-    <url><loc>{{ site.siteUrl }}/services.html</loc></url>
-    <url><loc>{{ site.siteUrl }}/blog.html</loc></url>
-    <url><loc>{{ site.siteUrl }}/videos.html</loc></url>
-    <url><loc>{{ site.siteUrl }}/contact.html</loc></url>
-    <url><loc>{{ site.siteUrl }}/about.html</loc></url>
+    <url><loc>{{ site.siteUrl }}/</loc></url>
+    <url><loc>{{ site.siteUrl }}/services/</loc></url>
+    <url><loc>{{ site.siteUrl }}/blog/</loc></url>
+    <url><loc>{{ site.siteUrl }}/videos/</loc></url>
+    <url><loc>{{ site.siteUrl }}/contact/</loc></url>
+    <url><loc>{{ site.siteUrl }}/about/</loc></url>
+    <url><loc>{{ site.siteUrl }}/privacy/</loc></url>
+{%- for cat in categories %}
+{%- if (collections.postsByCategory | postsInCategory(cat) | length) > 0 %}
+    <url><loc>{{ site.siteUrl }}/category/{{ cat | slugify }}/</loc></url>
+{%- endif %}
+{%- endfor %}
 {%- for post in collections.posts %}
     <url>
         <loc>{{ site.siteUrl }}{{ post.url }}</loc>
-        <lastmod>{{ post.data.date | isoDate }}</lastmod>
+        <lastmod>{{ (post.data.updated or post.data.date) | isoDate }}</lastmod>
     </url>
 {%- endfor %}
 </urlset>

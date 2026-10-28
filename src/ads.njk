@@ -1,0 +1,7 @@
+---
+permalink: /ads.txt
+eleventyExcludeFromCollections: true
+---
+{% if site.adsensePublisherId %}google.com, {{ site.adsensePublisherId | replace("ca-", "") }}, DIRECT, f08c47fec0942fa0
+{% else %}# ads.txt fills in automatically once adsensePublisherId is set in src/_data/site.json
+{% endif %}
