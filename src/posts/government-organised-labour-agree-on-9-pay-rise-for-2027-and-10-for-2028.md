@@ -1,30 +1,93 @@
 ---
-layout: post.njk
-title: Government, Organised Labour Agree on 9% Pay Rise for 2027 and 10% for 2028
+title: 2027 Slovak Republic National Scholarship Programme | Fully Funded
 date: 2026-10-28
 author: Mohammed Hanafi
-category: Education
-image: /img/uploads/fwsc-banner.png
+category: Scholarship
+image: /img/uploads/government-of-slovak-republic-national-scholarship-program.jpg
 icon: fa-bullhorn
-excerpt: Government and Organised Labour agree on an 8% base pay increase plus
-  1% for Conditions of Service in 2027, followed by a 10% base pay increase in
-  2028.
+excerpt: Explore the Slovak Republic National Scholarship Programme, including
+  eligibility, monthly stipends of up to €1,470, required documents and
+  application details.
 tags:
-  - Ghana public sector workers
-  - base pay increase
-  - Organised Labour
-  - Fair Wages and Salaries Commission
-  - FWSC
-  - Ministry of Finance
-  - salary increment 2027
-  - salary increment 2028
+  - Slovakia scholarships
+  - fully funded scholarships
+  - international scholarships
+  - Master’s scholarships
+  - PhD scholarships
+  - study in Europe
+  - Slovak Republic
 ---
-The Government of Ghana and Organised Labour have agreed to a **9% remuneration increase for public sector workers in 2027 and a 10% base pay increase for 2028**.
+The Government of the Slovak Republic is inviting eligible international applicants to apply for its National Scholarship Programme (NSP), which supports study, research, and teaching opportunities in Slovakia.
 
-Under the agreement, effective January 1, 2027, the 2027 package comprises an **8% base pay increase and 1 percentage point for Conditions of Service**.
+The programme offers monthly financial support of up to **€1,470**, depending on the applicant’s category. It is open to eligible master’s students, PhD students, university teachers, researchers and artists.
 
-For 2028, workers will receive a 10% across-the-board base pay increase, effective January 1, 2028.
+## Scholarship Summary
 
-The agreement also provides for a review of the 2028 arrangement if inflation for December 2027 exceeds twice the 8% midpoint projection stated in the agreement.
+* **Host Country:** Slovakia
+* **Study Destination:** Europe
+* **Study Level:** Master’s, PhD and research opportunities
+* **Eligible Applicants:** International applicants who meet the programme requirements
+* **Benefits:** Monthly stipend, support for living expenses and possible travel allowance
+* **Application Deadline:** October 31, 2026
 
-The two-year remuneration framework is expected to provide greater certainty for public sector workers while supporting continued engagement between the government and organised labour.
+## About the Scholarship
+
+The National Scholarship Programme of the Slovak Republic is financed by the Slovak government through its education ministry. It aims to promote international academic mobility by supporting eligible students, researchers, university teachers and artists during their stays at Slovak higher education and research institutions.
+
+Successful applicants can undertake approved study, research, or teaching activities at eligible host institutions in Slovakia.
+
+## Eligibility Requirements
+
+Applicants must meet the requirements for their chosen category.
+
+**Master’s students must:**
+
+* Be citizens of a country other than Slovakia.
+* Be enrolled at a university outside Slovakia.
+* Be studying at master’s level or have completed at least 2.5 years of university study in the same or a similar programme by the application deadline.
+* Be accepted by an eligible Slovak higher education institution for an academic mobility stay.
+
+**PhD students must:**
+
+* Be pursuing doctoral studies or scientific training outside Slovakia.
+* Be accepted by an eligible Slovak university or research institution for their proposed stay.
+
+**University teachers, researchers and artists must:**
+
+* Be invited by an eligible Slovak institution to undertake a teaching, research or artistic stay.
+
+Applicants should also meet the relevant language requirements and any additional conditions specified for their category.
+
+## Scholarship Benefits
+
+The programme provides monthly financial support intended to help cover living expenses, including accommodation and food, during the approved stay.
+
+The stated monthly scholarship amounts are:
+
+* **Master’s students:** €620
+* **PhD students:** €1,025
+* **University teachers, researchers and artists:** €1,470
+
+Scholarship holders may seek assistance from their host institutions with accommodation and administrative formalities related to their stay in Slovakia.
+
+## Required Documents
+
+Applicants should prepare the following documents for their online application:
+
+1. Curriculum vitae (CV).
+2. Motivation letter.
+3. Detailed study programme.
+4. Two recommendation letters from university teachers.
+5. Confirmation from the applicant’s home university showing current student status, where applicable.
+6. Copies of the bachelor’s diploma, diploma supplement and state examination certificate, where applicable.
+7. Admission or invitation letter from the Slovak host institution indicating the period of stay.
+
+Applicants should review the official programme requirements to confirm which documents apply to their category.
+
+## How to Apply
+
+Interested applicants should visit the official National Scholarship Programme website, review the eligibility requirements, and prepare the required documents before submitting an online application.
+
+**Application deadline:** October 31, 2026, according to the information provided. Applicants should confirm the deadline and current application conditions on the official website before applying.
+
+**Official website:** <https://www.scholarships.sk/>
