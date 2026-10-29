@@ -10,17 +10,30 @@ publish_mode: simple
 media_folder: "src/img/uploads"
 public_folder: "/img/uploads"
 
+# How the address (file name) of a new article is cleaned up
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
 collections:
   - name: "posts"
     label: "Blog posts"
     folder: "src/posts"
     create: true
+    identifier_field: "slug"
+    summary: "{{title}}"
     slug: "{{slug}}"
     extension: "md"
     format: "frontmatter"
     fields:
       - { label: "Layout", name: "layout", widget: "hidden", default: "post.njk" }
       - { label: "Title", name: "title", widget: "string" }
+      - label: "URL slug"
+        name: "slug"
+        widget: "string"
+        pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', "Use only lowercase letters, numbers and single hyphens, for example birmingham-business-school-scholarships-2027"]
+        hint: "The permanent web address of this article: yoursite/posts/THIS-PART/ . Fill it in when you first create the article, using a few relevant words (for example birmingham-business-school-scholarships-2027). It becomes the file name, so changing it later does NOT change the address. For articles published before this box existed, type the same words as their current address."
       - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
       - { label: "Last updated", name: "updated", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: false, hint: "Optional. Set this when you make a real change to an old article; search engines use it." }
       - { label: "Author", name: "author", widget: "string", default: "Mohammed Hanafi", hint: "Shown on the article cards." }

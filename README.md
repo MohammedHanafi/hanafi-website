@@ -85,3 +85,9 @@ Everything below lives in `src/_data/site.json`. Empty values mean "switched off
 `netlify.toml` runs `scripts/optimize.py` before and after the site is built: uploaded pictures are resized/compressed (nothing wider than 1600px, plus an 800px copy for phones) and the CSS is minified. If Python or Pillow is not available on the build machine, those steps are skipped with a warning and the site still builds.
 
 Page addresses are clean (`/about/`, `/blog/`, ...). The old `.html` addresses redirect to them.
+
+## Article addresses
+
+Every article lives at `/posts/<file name>/`. When you create an article in `/admin`, the **URL slug** box becomes that file name, for example `birmingham-business-school-scholarships-2027` gives `/posts/birmingham-business-school-scholarships-2027/`. Use lowercase words and single hyphens only.
+
+The address is fixed when the article is first published. Editing the title, the text, or even the slug box later does not move it, so shared links and search rankings keep working. To genuinely change an address you would rename the file in `src/posts/` on GitHub and add a redirect from the old address in `netlify.toml`.

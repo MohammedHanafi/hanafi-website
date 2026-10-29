@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 title: Videos
-description: "Watch videos from Mohammed Hanafi's YouTube channel, shown here as tiles and updated automatically as new videos are uploaded."
+description: "Watch the latest videos from Mohammed Hanafi's YouTube channel."
 active: videos
 pageHeader: true
 heading: "Videos"
@@ -17,14 +17,14 @@ breadcrumbs:
                 <div class="row px-3 pb-4">
                     <div class="col-12">
                         <p class="mb-4">
-                            These are pulled directly from my YouTube channel, so anything I upload there appears here automatically. Tap one to play it.
+                            The latest videos from my YouTube channel. Tap one to play it right here. This list refreshes whenever the site is updated, and the channel always has everything.
                         </p>
                     </div>
                 </div>
                 <div class="row px-3">
                     {% for v in videos %}
                     <div class="col-6 col-md-4 col-lg-3 mb-4">
-                        <button type="button" class="video-tile" data-toggle="modal" data-target="#videoModal" data-video-id="{{ v.id }}" aria-label="Play: {{ v.title }}">
+                        <button type="button" class="video-tile" data-video-id="{{ v.id }}" aria-label="Play: {{ v.title }}">
                             <span class="video-tile-thumb">
                                 <img src="{{ v.thumbnail }}" alt="" loading="lazy">
                                 <span class="video-tile-play" aria-hidden="true"><i class="fas fa-play"></i></span>
@@ -40,20 +40,16 @@ breadcrumbs:
                 </div>
                 <div class="row px-3">
                     <div class="col-12">
-                        <a href="{{ site.youtube }}" target="_blank" rel="noopener" class="btn btn-primary"><i class="fab fa-youtube mr-1" aria-hidden="true"></i> Subscribe on YouTube</a>
+                        <a href="{{ site.youtube }}" target="_blank" rel="noopener" class="btn btn-primary"><i class="fab fa-youtube mr-1" aria-hidden="true"></i> Watch more on YouTube</a>
                     </div>
                 </div>
             </div>
             <!-- Videos End -->
 
-            <!-- Video player modal -->
-            <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                    <div class="modal-content bg-dark border-0">
-                        <button type="button" class="close text-white p-2" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <div class="video-embed" id="videoModalEmbed"></div>
-                    </div>
+            <!-- Video player: opens over the page when a tile is tapped (see /js/videos.js) -->
+            <div id="videoLightbox" class="video-lightbox" role="dialog" aria-modal="true" aria-label="Video player" hidden>
+                <div class="video-lightbox-inner">
+                    <button type="button" class="video-lightbox-close" aria-label="Close video">&times;</button>
+                    <div class="video-lightbox-frame" id="videoLightboxFrame"></div>
                 </div>
             </div>

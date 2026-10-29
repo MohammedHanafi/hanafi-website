@@ -1,6 +1,7 @@
 ---
 layout: post.njk
 title: "The Inspiration Economy in Education: What is the state of Ghana's Education System?"
+slug: the-inspiration-economy-in-education
 date: 2023-01-01
 category: Education
 icon: fa-graduation-cap

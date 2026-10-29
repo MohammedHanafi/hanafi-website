@@ -39,6 +39,20 @@
   to = "/videos/"
   status = 301
 
+# Two scholarship articles were moved to relevant addresses. Anyone using the old links lands on the new
+# article. (A redirect only applies once the old page no longer exists, so these are safe to deploy early.)
+[[redirects]]
+  from = "/posts/government-organised-labour-agree-on-9-pay-rise-for-2027-and-10-for-2028/"
+  to = "/posts/slovak-republic-national-scholarship-programme-2027/"
+  status = 301
+
+# The old address of this one contains an apostrophe and an accented letter, which Netlify matches
+# unreliably when spelled out, so it is matched by its unique first words instead.
+[[redirects]]
+  from = "/posts/harry-kane-wins-2026-*"
+  to = "/posts/birmingham-business-school-scholarships-2027/"
+  status = 301
+
 # Keep this last: anything else that does not exist shows the custom 404 page.
 [[redirects]]
   from = "/*"
