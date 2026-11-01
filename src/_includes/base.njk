@@ -1,5 +1,5 @@
 {% from "macros.njk" import categoryNav %}
-{% set hideFromSearch = noindex or (category and ((collections.postsByCategory | postsInCategory(category) | length) == 0)) %}
+{% set hideFromSearch = noindex or (notesPage and ((collections.notes | length) == 0)) or (category and ((collections.postsByCategory | postsInCategory(category) | length) == 0)) %}
 <!DOCTYPE html>
 <html lang="en" data-ga-id="{{ site.googleAnalyticsId }}">
 <head>
@@ -82,6 +82,7 @@
                     <a href="/" class="nav-item nav-link{% if active == 'home' %} active{% endif %}"{% if active == 'home' %} aria-current="page"{% endif %}>Home</a>
                     <a href="/services/" class="nav-item nav-link{% if active == 'services' %} active{% endif %}"{% if active == 'services' %} aria-current="page"{% endif %}>Services</a>
                     <a href="/blog/" class="nav-item nav-link{% if active == 'blog' %} active{% endif %}"{% if active == 'blog' %} aria-current="page"{% endif %}>Blog</a>
+                    <a href="/lesson-notes/" class="nav-item nav-link{% if active == 'notes' %} active{% endif %}"{% if active == 'notes' %} aria-current="page"{% endif %}>Lesson Notes</a>
                     <a href="/videos/" class="nav-item nav-link{% if active == 'videos' %} active{% endif %}"{% if active == 'videos' %} aria-current="page"{% endif %}>Videos</a>
                     <a href="/contact/" class="nav-item nav-link{% if active == 'contact' %} active{% endif %}"{% if active == 'contact' %} aria-current="page"{% endif %}>Contact</a>
                     <a href="/about/" class="nav-item nav-link{% if active == 'about' %} active{% endif %}"{% if active == 'about' %} aria-current="page"{% endif %}>About</a>
@@ -150,6 +151,7 @@
     {% if forms %}<script src="/js/forms.js"></script>{% endif %}
     {% if share %}<script src="/js/share.js"></script>{% endif %}
     {% if videosPage %}<script src="/js/videos.js"></script>{% endif %}
+    {% if notesPage %}<script src="/js/notes.js"></script>{% endif %}
 
     <!-- Netlify Identity: only needed when you open an invite / confirmation / recovery link
          from an email (those land on a normal page, not /admin). For everyone else the widget

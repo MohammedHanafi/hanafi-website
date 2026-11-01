@@ -58,6 +58,29 @@ collections:
       - { label: "Tags", name: "tags", widget: "list", default: [] }
       - { label: "Body", name: "body", widget: "markdown" }
 
+  - name: "notes"
+    label: "Lesson notes"
+    folder: "src/notes"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    media_folder: "/src/downloads"
+    public_folder: "/downloads"
+    summary: "{{schoolClass}} {{term}} Week {{week}}: {{subject}} - {{title}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{hour}}{{minute}}{{second}}-{{slug}}"
+    fields:
+      - { label: "Term", name: "term", widget: "select", options: ["Term 1", "Term 2", "Term 3"] }
+      - { label: "Class", name: "schoolClass", widget: "select", options: ["KG 1", "KG 2", "Basic 1", "Basic 2", "Basic 3", "Basic 4", "Basic 5", "Basic 6", "Basic 7", "Basic 8", "Basic 9"] }
+      - label: "Subject"
+        name: "subject"
+        widget: "select"
+        options: ["English Language", "Mathematics", "Science", "Religious and Moral Education", "History", "Social Studies", "Creative Arts", "Creative Arts and Design", "Career Technology", "Computing", "Ghanaian Language", "General"]
+        hint: "Lower Primary (Basic 1-3): English Language, Mathematics, Science, Religious and Moral Education, History, Creative Arts, Ghanaian Language. Upper Primary (Basic 4-6): the same plus Computing. JHS (Basic 7-9): English Language, Mathematics, Science, Religious and Moral Education, Social Studies, Career Technology, Creative Arts and Design, Computing, Ghanaian Language. Kindergarten: General."
+      - { label: "Week", name: "week", widget: "number", value_type: "int", min: 1, max: 16, default: 1, hint: "The week of the term, for example 3 for Week 3." }
+      - { label: "Title", name: "title", widget: "string", hint: "The topic for that week, for example: Addition of numbers up to 20" }
+      - { label: "Description", name: "description", widget: "text", required: false, hint: "Optional. One or two sentences about what the notes cover." }
+      - { label: "File", name: "file", widget: "file", hint: "The notes people will download. PDF works best. Keep the file under about 5 MB (compress big PDFs first). You can also paste an https link instead, for example to Google Drive." }
+
   - name: "services"
     label: "Services page"
     files:

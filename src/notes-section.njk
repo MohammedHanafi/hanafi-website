@@ -1,0 +1,88 @@
+---
+layout: base.njk
+active: notes
+notesPage: true
+pageHeader: true
+permalink: "{{ section.url }}"
+pagination:
+  data: collections.noteSections
+  size: 1
+  alias: section
+eleventyComputed:
+  title: "{{ section.className }} {{ section.term }} Lesson Notes"
+  heading: "{{ section.className }} - {{ section.term }}"
+  description: "Download weekly {{ section.className }} {{ section.term }} lesson notes, subject by subject, prepared by {{ site.name }}."
+  breadcrumbs:
+    - label: "Home"
+      href: "/"
+    - label: "Lesson Notes"
+      href: "/lesson-notes/"
+    - label: "{{ section.className }} - {{ section.term }}"
+---
+            <!-- Class notes Start -->
+            <div class="container bg-white pt-5 pb-3">
+                <div class="row px-3 pb-3">
+                    <div class="col-12">
+                        <p class="mb-3"><strong>{{ section.level }}</strong>{% if section.levelRange %} ({{ section.levelRange }}){% endif %} &middot; {{ section.count }} {% if section.count == 1 %}note{% else %}notes{% endif %}</p>
+
+                        <p class="note-nav-label">{{ section.className }} in other terms</p>
+                        <nav class="notes-subjects mb-3" aria-label="Terms for {{ section.className }}">
+{%- for s in collections.noteSections | sectionsForClass(section.className) %}
+                            <a class="notes-chip{% if s.term == section.term %} active{% endif %}" href="{{ s.url }}"{% if s.term == section.term %} aria-current="page"{% endif %}>{{ s.term }}</a>
+{%- endfor %}
+                        </nav>
+
+                        <p class="note-nav-label">Other classes in {{ section.term }}</p>
+                        <nav class="notes-subjects mb-4" aria-label="Classes in {{ section.term }}">
+{%- for s in collections.noteSections | sectionsForTerm(section.term) %}
+                            <a class="notes-chip{% if s.className == section.className %} active{% endif %}" href="{{ s.url }}"{% if s.className == section.className %} aria-current="page"{% endif %}>{{ s.className }}</a>
+{%- endfor %}
+                        </nav>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="notesSearch" class="sr-only">Search these lesson notes</label>
+                                <input type="search" id="notesSearch" class="form-control" placeholder="Search by subject, week or topic" autocomplete="off">
+                                <p id="notesCount" class="small text-muted mt-2 mb-0" aria-live="polite"></p>
+                            </div>
+                        </div>
+                        <nav class="notes-subjects" aria-label="Subjects">
+{%- for group in section.subjects %}
+                            <a href="#{{ group.subject | slugify }}" class="notes-chip">{{ group.subject }}</a>
+{%- endfor %}
+                        </nav>
+                    </div>
+                </div>
+
+                <p id="notesNoResults" class="px-3 text-muted" hidden>No lesson notes match your search.</p>
+
+{% for group in section.subjects %}
+                <section id="{{ group.subject | slugify }}" class="note-group px-3">
+                    <h2 class="h4 font-weight-bold mb-4">{{ group.subject }}</h2>
+                    <div class="row">
+{%- for note in group.notes %}
+{%- set kind = note.data.file | fileKind %}
+{%- set ext = note.data.file | fileExt %}
+{%- if not ext %}{% set ext = "LINK" if kind == "external" else "FILE" %}{% endif %}
+{%- set size = note.data.file | fileSize %}
+                        <div class="col-md-6 col-lg-4 mb-4 d-flex note-item" data-search="Week {{ note.data.week }} {{ note.data.title }} {{ group.subject }} {{ note.data.description }}">
+                            <article class="note-card">
+                                <div class="note-card-top">
+                                    <span class="note-week">Week {{ note.data.week }}</span>
+                                    <span class="note-level">{{ ext }}{% if size %} &middot; {{ size }}{% endif %}</span>
+                                </div>
+                                <h3 class="note-title">{{ note.data.title }}</h3>
+                                {% if note.data.description %}<p class="note-desc">{{ note.data.description }}</p>{% endif %}
+                                {% if kind == "external" %}
+                                <a class="btn btn-primary btn-sm note-download" href="{{ note.data.file }}" target="_blank" rel="noopener"><i class="fas fa-external-link-alt mr-1" aria-hidden="true"></i> Open<span class="sr-only"> {{ group.subject }} week {{ note.data.week }}: {{ note.data.title }}</span></a>
+                                {% else %}
+                                <a class="btn btn-primary btn-sm note-download" href="{{ note.data.file }}" download><i class="fas fa-download mr-1" aria-hidden="true"></i> Download<span class="sr-only"> {{ group.subject }} week {{ note.data.week }}: {{ note.data.title }}</span></a>
+                                {% endif %}
+                            </article>
+                        </div>
+{%- endfor %}
+                    </div>
+                </section>
+{% endfor %}
+            </div>
+            <!-- Class notes End -->

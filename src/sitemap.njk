@@ -7,6 +7,9 @@ eleventyExcludeFromCollections: true
     <url><loc>{{ site.siteUrl }}/</loc></url>
     <url><loc>{{ site.siteUrl }}/services/</loc></url>
     <url><loc>{{ site.siteUrl }}/blog/</loc></url>
+{%- if (collections.notes | length) > 0 %}
+    <url><loc>{{ site.siteUrl }}/lesson-notes/</loc></url>
+{%- endif %}
     <url><loc>{{ site.siteUrl }}/videos/</loc></url>
     <url><loc>{{ site.siteUrl }}/contact/</loc></url>
     <url><loc>{{ site.siteUrl }}/about/</loc></url>
@@ -15,6 +18,9 @@ eleventyExcludeFromCollections: true
 {%- if (collections.postsByCategory | postsInCategory(cat) | length) > 0 %}
     <url><loc>{{ site.siteUrl }}/category/{{ cat | slugify }}/</loc></url>
 {%- endif %}
+{%- endfor %}
+{%- for section in collections.noteSections %}
+    <url><loc>{{ site.siteUrl }}{{ section.url }}</loc></url>
 {%- endfor %}
 {%- for post in collections.posts %}
     <url>

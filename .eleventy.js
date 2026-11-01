@@ -7,6 +7,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/lib");
   eleventyConfig.addPassthroughCopy("src/img");
+  eleventyConfig.addPassthroughCopy("src/downloads");
+  fs.mkdirSync(path.join("src", "downloads"), { recursive: true }); // uploaded lesson notes live here
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy("src/favicon.ico");
   eleventyConfig.addPassthroughCopy("src/favicon.svg");
@@ -41,6 +43,167 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("postsInCategory", function (groups, category) {
     const match = (groups || []).find(function (g) { return g.category === category; });
     return match ? match.posts : [];
+  });
+
+  // ---- Lesson notes: Term > Class > Subject > Week -------------------------------------
+  // The terms, classes and the subjects of each level live in src/_data/curriculum.json.
+  const curriculum = require("./src/_data/curriculum.json");
+  const allClasses = [].concat.apply([], curriculum.levels.map(function (level) { return level.classes; }));
+  const allSubjects = [];
+  curriculum.levels.forEach(function (level) {
+    level.subjects.forEach(function (subject) { if (!allSubjects.includes(subject)) allSubjects.push(subject); });
+  });
+
+  function slugifyText(str) {
+    return (str || "").toString().toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  }
+  // "basic 5 " -> "Basic 5" (the official spelling from the list), or "" if it is not in the list
+  function canonical(list, value) {
+    const wanted = String(value === undefined || value === null ? "" : value).trim().toLowerCase();
+    return list.find(function (item) { return item.toLowerCase() === wanted; }) || "";
+  }
+  const warned = new Set();
+  function warnOnce(message) {
+    if (!warned.has(message)) { warned.add(message); console.warn(message); }
+  }
+
+  // A "file" is valid if it is a path on this site ("/downloads/x.pdf") or an https link.
+  function localFilePath(p) {
+    if (typeof p !== "string" || !p.startsWith("/") || p.startsWith("//") || p.includes("..")) return null;
+    return p;
+  }
+  function fileKind(p) {
+    if (typeof p === "string" && /^https:\/\//i.test(p)) return "external";
+    return localFilePath(p) ? "local" : "";
+  }
+  eleventyConfig.addFilter("fileKind", fileKind);
+
+  // "/downloads/week-1.pdf" -> "PDF"
+  eleventyConfig.addFilter("fileExt", function (p) {
+    const match = String(p || "").split(/[?#]/)[0].match(/\.([A-Za-z0-9]{1,5})$/);
+    return match ? match[1].toUpperCase() : "";
+  });
+
+  // size of an uploaded file, e.g. "850 KB" or "2.3 MB" ("" if it is a link or cannot be found)
+  eleventyConfig.addFilter("fileSize", function (p) {
+    const local = localFilePath(p);
+    if (!local) return "";
+    let bytes;
+    try {
+      bytes = fs.statSync(path.join("src", decodeURIComponent(local))).size;
+    } catch (err) {
+      return "";
+    }
+    if (bytes < 1024 * 1024) return Math.max(1, Math.round(bytes / 1024)) + " KB";
+    return (bytes / (1024 * 1024)).toFixed(1) + " MB";
+  });
+
+  // Every usable note, in order: term, class, week, title. A note is left out (and the build log says
+  // why) if it has no term/class/subject/week, or if its uploaded file cannot be found, rather than
+  // showing a Download button that leads nowhere.
+  function noteList(collectionApi) {
+    const notes = [];
+    collectionApi.getFilteredByGlob("src/notes/*.md").forEach(function (note) {
+      const d = note.data;
+      const label = "\"" + (d.title || "untitled") + "\"";
+      const term = canonical(curriculum.terms, d.term);
+      const schoolClass = canonical(allClasses, d.schoolClass);
+      const subject = String(d.subject || "").trim();
+      const week = parseInt(d.week, 10);
+      if (!term || !schoolClass || !subject || !(week >= 1)) {
+        warnOnce("Lesson note skipped (it needs a term, class, subject and week number): " + label);
+        return;
+      }
+      const kind = fileKind(d.file);
+      if (kind === "") {
+        warnOnce("Lesson note skipped (no usable file): " + label);
+        return;
+      }
+      if (kind === "local") {
+        let found = false;
+        try { found = fs.existsSync(path.join("src", decodeURIComponent(localFilePath(d.file)))); } catch (err) { found = false; }
+        if (!found) {
+          warnOnce("Lesson note skipped, its file was not found: " + label + " (" + d.file + ")");
+          return;
+        }
+      }
+      notes.push({
+        date: note.date,
+        data: Object.assign({}, d, { term: term, schoolClass: schoolClass, subject: canonical(allSubjects, subject) || subject, week: week })
+      });
+    });
+    return notes.sort(function (a, b) {
+      return (curriculum.terms.indexOf(a.data.term) - curriculum.terms.indexOf(b.data.term)) ||
+        (allClasses.indexOf(a.data.schoolClass) - allClasses.indexOf(b.data.schoolClass)) ||
+        (a.data.week - b.data.week) ||
+        String(a.data.title).localeCompare(String(b.data.title));
+    });
+  }
+  eleventyConfig.addCollection("notes", noteList);
+
+  // One entry per Term + Class that has notes; each gets its own page (src/notes-section.njk).
+  // Subjects follow the order in curriculum.json; weeks run 1, 2, 3...
+  function buildSections(collectionApi) {
+    const notes = noteList(collectionApi);
+    const sections = [];
+    curriculum.terms.forEach(function (term) {
+      curriculum.levels.forEach(function (level) {
+        level.classes.forEach(function (className) {
+          const inClass = notes.filter(function (n) { return n.data.term === term && n.data.schoolClass === className; });
+          if (!inClass.length) return;
+          const present = [];
+          inClass.forEach(function (n) { if (!present.includes(n.data.subject)) present.push(n.data.subject); });
+          const usual = level.subjects.filter(function (s) { return present.includes(s); });
+          const unusual = present.filter(function (s) { return !level.subjects.includes(s); }).sort();
+          unusual.forEach(function (s) {
+            warnOnce("Subject \"" + s + "\" is not in the usual list for " + className + " (shown anyway).");
+          });
+          sections.push({
+            term: term,
+            termSlug: slugifyText(term),
+            className: className,
+            classSlug: slugifyText(className),
+            level: level.name,
+            levelRange: level.range || "",
+            url: "/lesson-notes/" + slugifyText(term) + "/" + slugifyText(className) + "/",
+            count: inClass.length,
+            subjects: usual.concat(unusual).map(function (subject) {
+              return { subject: subject, notes: inClass.filter(function (n) { return n.data.subject === subject; }) };
+            })
+          });
+        });
+      });
+    });
+    return sections;
+  }
+  eleventyConfig.addCollection("noteSections", buildSections);
+
+  // For the Lesson Notes front page: every term, with its levels and the classes that have notes
+  eleventyConfig.addCollection("noteTerms", function (collectionApi) {
+    const sections = buildSections(collectionApi);
+    return curriculum.terms.map(function (term) {
+      return {
+        term: term,
+        termSlug: slugifyText(term),
+        levels: curriculum.levels.map(function (level) {
+          return {
+            name: level.name,
+            range: level.range || "",
+            classes: sections
+              .filter(function (s) { return s.term === term && s.level === level.name; })
+              .map(function (s) { return { className: s.className, url: s.url, count: s.count }; })
+          };
+        }).filter(function (level) { return level.classes.length > 0; })
+      };
+    });
+  });
+
+  // Other terms that have notes for the same class / other classes that have notes in the same term
+  eleventyConfig.addFilter("sectionsForClass", function (sections, className) {
+    return (sections || []).filter(function (s) { return s.className === className; });
+  });
+  eleventyConfig.addFilter("sectionsForTerm", function (sections, term) {
+    return (sections || []).filter(function (s) { return s.term === term; });
   });
 
   // URL-safe version of a category name, e.g. "Education" -> "education"

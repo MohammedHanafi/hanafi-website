@@ -91,3 +91,18 @@ Page addresses are clean (`/about/`, `/blog/`, ...). The old `.html` addresses r
 Every article lives at `/posts/<file name>/`. When you create an article in `/admin`, the **URL slug** box becomes that file name, for example `birmingham-business-school-scholarships-2027` gives `/posts/birmingham-business-school-scholarships-2027/`. Use lowercase words and single hyphens only.
 
 The address is fixed when the article is first published. Editing the title, the text, or even the slug box later does not move it, so shared links and search rankings keep working. To genuinely change an address you would rename the file in `src/posts/` on GitHub and add a redirect from the old address in `netlify.toml`.
+
+## Lesson notes
+
+Notes are organised **Term, then Class, then Subject, then Week**.
+
+To add one, open **Lesson notes** in `/admin`, click **New Lesson notes**, and fill in: Term, Class, Subject, Week number, the topic (Title), an optional description, and the file (PDF works best; keep it under about 5 MB). Publish. You can paste an `https` link instead of uploading a file (for example to Google Drive); the button then says Open.
+
+On the site, `/lesson-notes/` lists every term with buttons for the classes that have notes (with the number of notes). Each button opens a page for that class and term, for example `/lesson-notes/term-1/basic-5/`, with the subjects in curriculum order and the weeks in order. Visitors can search a class page by subject, week or topic.
+
+- The terms, classes and subjects of each level are in `src/_data/curriculum.json`. The dropdowns in `src/admin/config.yml` must list the same names, so change both together (Kindergarten currently uses the subject "General").
+- Spelling and capital letters in the old free-text notes don't matter, but Term, Class and Subject must match the lists. A note is left out of the site, and the Netlify build log says why ("Lesson note skipped ..."), if it has no term, class, subject or week number, no usable file, or if its uploaded file cannot be found. Notes made with the very first version of the form (which had no Term, Class and Week) need those filled in once.
+- A subject that is not on the usual list for that class is still shown, with a warning in the build log.
+- Uploaded files are stored in `src/downloads`. Give each file a different name: uploading a file with the same name as an earlier one replaces it.
+- Every download uses your Netlify bandwidth, so keep files small.
+- Until the first note is published the page shows a "coming soon" message and is kept out of Google and the sitemap. Class pages only exist once they have a note.

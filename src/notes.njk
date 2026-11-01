@@ -1,0 +1,51 @@
+---
+layout: base.njk
+title: Lesson Notes
+description: "Weekly lesson notes by Mohammed Hanafi for Kindergarten, Lower Primary, Upper Primary and JHS, organised by term, class, subject and week."
+active: notes
+notesPage: true
+pageHeader: true
+heading: "Lesson Notes"
+permalink: "/lesson-notes/"
+breadcrumbs:
+  - label: "Home"
+    href: "/"
+  - label: "Lesson Notes"
+---
+            <!-- Lesson notes Start -->
+            <div class="container bg-white pt-5 pb-3">
+{% if (collections.notes | length) > 0 %}
+                <div class="row px-3 pb-3">
+                    <div class="col-12">
+                        <p class="mb-4">Weekly lesson notes you can download. Choose a term, then your class, to see the notes subject by subject and week by week.</p>
+                        <nav class="notes-subjects" aria-label="Terms">
+{%- for t in collections.noteTerms %}
+                            <a href="#{{ t.termSlug }}" class="notes-chip">{{ t.term }}</a>
+{%- endfor %}
+                        </nav>
+                    </div>
+                </div>
+{% for t in collections.noteTerms %}
+                <section id="{{ t.termSlug }}" class="note-term px-3">
+                    <h2 class="h4 font-weight-bold mb-3">{{ t.term }}</h2>
+{%- for level in t.levels %}
+                    <p class="note-level-title">{{ level.name }}{% if level.range %} <span>({{ level.range }})</span>{% endif %}</p>
+                    <div class="notes-subjects mb-3">
+{%- for c in level.classes %}
+                        <a class="notes-chip" href="{{ c.url }}">{{ c.className }} <span class="note-count">{{ c.count }}<span class="sr-only"> notes</span></span></a>
+{%- endfor %}
+                    </div>
+{%- else %}
+                    <p class="text-muted">Notes for this term are coming soon.</p>
+{%- endfor %}
+                </section>
+{% endfor %}
+{% else %}
+                <div class="row px-3 pb-5">
+                    <div class="col-12">
+                        <p class="text-muted m-0">Lesson notes will appear here soon. Check back shortly.</p>
+                    </div>
+                </div>
+{% endif %}
+            </div>
+            <!-- Lesson notes End -->

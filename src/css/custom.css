@@ -671,3 +671,155 @@ body.lightbox-open {
 .policy-body ul {
     padding-left: 1.25rem;
 }
+
+/* Lesson notes page */
+.notes-subjects {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.notes-chip {
+    margin: 0 .5rem .5rem 0;
+    padding: .35rem .9rem;
+    border: 1px solid #2A4B7C;
+    border-radius: 2rem;
+    font-size: .9rem;
+    font-weight: 600;
+    color: #2A4B7C;
+}
+
+.notes-chip:hover {
+    background: #2A4B7C;
+    color: #fff;
+    text-decoration: none;
+}
+
+.note-group {
+    scroll-margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.note-item[hidden],
+.note-group[hidden],
+#notesNoResults[hidden] {
+    display: none !important;
+}
+
+.note-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1.25rem;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, .12);
+}
+
+.note-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: .75rem;
+}
+
+.note-ext {
+    padding: .2rem .55rem;
+    background: #2A4B7C;
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+}
+
+.note-level {
+    font-size: .8rem;
+    font-weight: 700;
+    color: #6c757d;
+}
+
+.note-title {
+    margin: 0 0 .5rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #202C45;
+}
+
+.note-desc {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    margin: 0 0 .75rem;
+    font-size: .92rem;
+    color: #6c757d;
+}
+
+.note-meta {
+    margin: auto 0 .9rem;
+    padding-top: .5rem;
+    font-size: .78rem;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    color: #6c757d;
+}
+
+.note-download {
+    align-self: flex-start;
+    margin-top: auto;
+}
+
+/* Lesson notes: terms, classes and weeks */
+.notes-chip.active {
+    background: #2A4B7C;
+    color: #fff;
+}
+
+.note-count {
+    display: inline-block;
+    min-width: 1.4rem;
+    margin-left: .35rem;
+    padding: 0 .35rem;
+    background: rgba(42, 75, 124, .12);
+    border-radius: 1rem;
+    font-size: .75rem;
+    text-align: center;
+}
+
+.notes-chip:hover .note-count,
+.notes-chip.active .note-count {
+    background: rgba(255, 255, 255, .25);
+}
+
+.note-term {
+    margin-bottom: 1.5rem;
+}
+
+.note-level-title {
+    margin: 0 0 .5rem;
+    font-weight: 700;
+    color: #202C45;
+}
+
+.note-level-title span {
+    font-weight: 400;
+    color: #6c757d;
+}
+
+.note-nav-label {
+    margin: 0 0 .4rem;
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: #6c757d;
+}
+
+.note-week {
+    padding: .2rem .6rem;
+    background: #2A4B7C;
+    color: #fff;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
