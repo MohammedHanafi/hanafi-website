@@ -1,29 +1,70 @@
 ---
-layout: post.njk
-title: GES Cancels November 5–6 Mid-Term Break for Basic Schools
-slug: ges-cancels-basic-schools-mid-term-break-november-2026
+title: Young Humanitarian Handbook Training 2026 | Apply Online
+slug: young-humanitarian-handbook-learning-series-2026
 date: 2026-11-02
 author: Mohammed Hanafi
-category: Education
-image: /img/uploads/whatsapp-image-2026-11-02-at-8.25.32-am.jpeg
-icon: fa-book
-excerpt: The Ghana Education Service has cancelled the November 5–6 mid-term
-  break for basic schools to recover instructional hours lost during the recent
-  industrial action.
+category: Scholarship
+image: /img/uploads/screenshot-2024-10-22-at-10.33.19-am.webp
+icon: fa-lightbulb
+excerpt: Apply for the 2026 Young Humanitarian Handbook Learning Series by
+  ActionAid, UNICEF and partners. Attend four online sessions and qualify for a
+  certificate.
 tags:
-  - Ghana Education Service
-  - GES
-  - Basic Schools
-  - Mid-Term Break
-  - Ghana Education News
-  - School Calendar 2026
+  - Young Humanitarians
+  - UNICEF
+  - ActionAid
+  - Humanitarian Training
+  - Youth Leadership
+  - Volunteer Opportunities
+  - Free Online Courses
 ---
-The Ghana Education Service (GES) has announced the cancellation of the two-day mid-term break scheduled for basic schools on November 5 and 6, 2026.
+Applications are open for the **Young Humanitarian Handbook Learning Series 2026**, an interactive online training programme designed for young leaders, volunteers, activists, peer educators and members of youth-led organisations interested in humanitarian action.
 
-According to a notice issued by GES Management, the decision forms part of efforts to recover instructional hours lost during the recent industrial action.
+The programme is organised by the Compact for Young People in Humanitarian Action, ActionAid and UNICEF. It aims to help participants understand humanitarian action, strengthen their leadership abilities and develop practical facilitation and peer-learning skills.
 
-As a result, all basic schools are expected to remain open and conduct normal academic activities on Thursday, November 5, and Friday, November 6, 2026.
+### What Participants Will Learn
 
-Teachers, students, parents, guardians and the general public have been urged to take note of the directive and be guided accordingly.
+Through four online sessions, participants will:
 
-The notice was issued by Daniel Fenyi of GES Headquarters, who thanked the public for their cooperation and continued commitment to quality education.
+* Explore the Young Humanitarian Handbook.
+* Strengthen their understanding of humanitarian action and key concepts.
+* Build leadership, facilitation and peer-learning skills.
+
+### Training Schedule
+
+The learning series will take place on the following dates:
+
+* **Session 1:** Tuesday, November 17, 2026
+* **Session 2:** Thursday, November 19, 2026
+* **Session 3:** Tuesday, November 24, 2026
+* **Session 4:** Thursday, November 26, 2026
+
+All sessions are scheduled for **9:45 AM GMT and 12:45 PM EAT**.
+
+### Who Can Apply?
+
+The programme is open to young leaders, volunteers, peer educators, activists and members of youth-led organisations who are interested in humanitarian action and committed to learning and facilitating with others.
+
+The training will be conducted in English.
+
+### Certificate of Completion
+
+Participants may receive a certificate of completion following a review of participation records in December 2026. To qualify, participants must:
+
+* Attend all four learning sessions.
+* Complete all required learning activities and assignments.
+* Participate actively throughout the learning journey.
+
+Attendance at all sessions and completion of all learning activities are mandatory for certification.
+
+### Application Deadline
+
+According to the announcement, applications are open from **November 2 to November 8, 2026**. Places are limited, so interested applicants are encouraged to apply before the deadline.
+
+### How to Apply
+
+Interested applicants can complete the online application form through the link below.
+
+**Application form:** <https://docs.google.com/forms/d/e/1FAIpQLSd5-84Mi0wfbL5W6xdNVGa4DSUYfrlICNGBMXoWVSbGoVewjA/viewform>
+
+This learning opportunity offers young people an opportunity to strengthen their humanitarian knowledge, connect with peers and develop skills to support positive change in their communities.
